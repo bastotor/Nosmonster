@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Definition>
+  <Globals>
+    <Label Value="In diesem Timespace werden deine Fähigkeiten ernsthaft auf die Probe gestellt. Du musst sehr vorsichtig sein, denn schon ein kleiner Fehler kann fatale Folgen haben. Wenn du ein großer und tapferer Abenteurer werden willst, musst du beweisen, dass du diese Mission bestehen kannst. Bist du bereit dafür?" />
+    <Title Value="Eine schwierige Entscheidung" />
+    <LevelMinimum Value="10" />
+    <LevelMaximum Value="99" />
+    <Lives Value="2" />
+    <RequieredItems>
+      <Item VNum="1012" Amount="0" />
+    </RequieredItems>
+    <DrawItems>
+      <Item VNum="205" Amount="1" />
+      <Item VNum="207" Amount="1" />
+      <Item VNum="208" Amount="1" />
+      <Item VNum="209" Amount="1" />
+      <Item VNum="210" Amount="1" />
+    </DrawItems>
+    <SpecialItems>
+      <Item VNum="203" Amount="1" />
+    </SpecialItems>
+    <GiftItems>
+      <Item VNum="10" Amount="1" />
+    </GiftItems>
+  </Globals>
+  <InstanceEvents>   
+    <CreateMap Map="1" VNum="4100" IndexX="3" IndexY="8">
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="2" PositionX="14" PositionY="28" Type="0" ToMap="2" ToX="14" ToY="1" />
+	  <OnMoveOnMap>
+        <SendMessage Value="Die Mission beginnt, sobald Du den ersten Raum betrittst." Type="0"/>
+        <GenerateClock Value="3000"/>
+      </OnMoveOnMap>
+    </CreateMap>
+	<CreateMap Map="2" VNum="4113" IndexX="3" IndexY="9">
+      <OnCharacterDiscoveringMap>
+        <NpcDialog Value="6012" />
+      </OnCharacterDiscoveringMap>
+      <GenerateClock Value="4000" />
+      <StartClock />
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="0" ToMap="1" ToX="14" ToY="28" />
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="1" ToMap="3" ToX="1" ToY="15" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="1" ToMap="10" ToX="28" ToY="15" />
+      <!-- Buttons -->
+	  
+      <SpawnButton VNumDisabled="1057" VNumEnabled="1057" Id="0">
+		<OnFirstEnable>
+			<ChangePortalType IdOnMap="1" Type="2" />
+			<RefreshMapItems />
+			<RemoveAllButton /> 
+	    </OnFirstEnable>
+	  </SpawnButton>
+	  <SpawnButton VNumDisabled="1057" VnumEnabled="1057" Id="1">
+	    <OnFirstEnable>
+			<ChangePortalType IdOnMap="3" Type="2" />
+			<RefreshMapItems />	
+			<RemoveAllButton /> 
+		</OnFirstEnable>		  
+      </SpawnButton>
+      
+	  
+    </CreateMap>
+	
+	<!-- Waypoint to rightside -->
+	<CreateMap Map="3" VNum="4113" IndexX="4" IndexY="9">
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="2" PositionX="14" PositionY="28" Type="0" ToMap="4" ToX="14" ToY="1" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="1" ToMap="2" ToX="28" ToY="15" />
+    </CreateMap>
+    <CreateMap Map="4" VNum="4106" IndexX="4" IndexY="10">
+	  <OnMoveOnMap>
+		<SendMessage Value="Vorsicht, Feinde!" Type="0" />
+		<SendPacket  Value="rsfm 3 2 0 0"/>
+	  </OnMoveOnMap>
+	  <OnCharacterDiscoveringMap>
+      <OnMapClean>
+        <ChangePortalType IdOnMap="3" Type="2" />
+        <SendMessage Value="Du hast alle Monster erledigt!" Type="0" />
+        <RefreshMapItems />
+      </OnMapClean>
+	  <!-- Monsters -->
+      <SummonMonster VNum="54" PositionX="13" PositionY="9">
+        <OnDeath>
+          <SummonMonster VNum="54" PositionX="12" PositionY="20" IsBonus="true" />
+        </OnDeath>
+      </SummonMonster>
+      <SummonMonster VNum="54" PositionX="9" PositionY="8">
+        <OnDeath>
+          <SummonMonster VNum="54" PositionX="8" PositionY="14" />
+        </OnDeath>
+      </SummonMonster>
+	  </OnCharacterDiscoveringMap>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="1" ToMap="1" ToX="14" ToY="28" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="1" ToMap="5" ToX="28" ToY="15" />
+      
+    </CreateMap>
+	<CreateMap Map="5" VNum="4106" IndexX="3" IndexY="10">
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="0" ToMap="4" ToX="1" ToY="15" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="0" ToMap="6" ToX="28" ToY="15" />
+    </CreateMap>
+    <CreateMap Map="6" VNum="4104" IndexX="2" IndexY="10">
+	  <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="1" ToMap="5" ToX="1" ToY="15" />
+      <SpawnPortal IdOnMap="2" PositionX="14" PositionY="28" Type="1" ToMap="7" ToX="14" ToY="1" />
+      <OnCharacterDiscoveringMap>
+	  <OnMoveOnMap>
+		<SendMessage Value="Vorsicht, Feinde!" Type="0" />
+		<SendPacket  Value="rsfm 3 2 0 0"/>
+	  </OnMoveOnMap>
+      <OnMapClean>
+        <ChangePortalType IdOnMap="2" Type="2" />
+        <AddClockTime Value="3000" />
+        <SendMessage Value="Du hast alle Monster erledigt!" Type="0" />
+        <RefreshMapItems />
+      </OnMapClean>
+      <!-- Monsters -->
+      <SummonMonster VNum="9" PositionX="21" PositionY="19" />
+      <SummonMonster VNum="54" PositionX="15" PositionY="9" IsBonus="true" />
+      <SummonMonster VNum="9" PositionX="10" PositionY="12">
+        <OnDeath>
+          <SummonMonster VNum="9" PositionX="18" PositionY="12" />
+          <SummonMonster VNum="54" PositionX="19" PositionY="10" />
+        </OnDeath>
+      </SummonMonster>
+	 </OnCharacterDiscoveringMap>
+    </CreateMap>	
+	<CreateMap Map="7" VNum="4110" IndexX="2" IndexY="11">
+	<OnCharacterDiscoveringMap>
+	   <OnMoveOnMap>
+		<SendMessage Value="Feinde, in Sicht!" Type="0" />
+		<SendPacket  Value="rsfm 3 2 0 0"/>
+	  </OnMoveOnMap>
+      <OnMapClean>
+        <ChangePortalType IdOnMap="3" Type="2" />
+        <SendMessage Value="Du hast alle Monster erledigt!" Type="0" />
+        <RefreshMapItems />
+      </OnMapClean>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="1" ToMap="6" ToX="14" ToY="28" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="1" ToMap="8" ToX="28" ToY="15" />
+      <!-- Monsters -->
+      <SummonMonster VNum="54" PositionX="12" PositionY="10" />
+      <SummonMonster VNum="54" PositionX="8" PositionY="15" IsBonus="true">
+        <OnDeath>
+          <SummonMonster VNum="54" PositionX="19" PositionY="17" IsBonus="true">
+            <OnDeath>
+              <SummonMonster VNum="54" PositionX="19" PositionY="11" IsBonus="true">
+                <OnDeath>
+                  <SummonMonster VNum="129" PositionX="10" PositionY="12" IsBonus="true">
+                    <OnDeath>
+                      <SummonMonster VNum="129" PositionX="11" PositionY="18" IsBonus="true" />
+                    </OnDeath>
+                  </SummonMonster>
+                </OnDeath>
+              </SummonMonster>
+            </OnDeath>
+          </SummonMonster>
+        </OnDeath>
+      </SummonMonster>
+	  </OnCharacterDiscoveringMap>
+    </CreateMap>
+	<CreateMap Map="8" VNum="4110" IndexX="1" IndexY="11">
+	<OnCharacterDiscoveringMap>
+	<OnMoveOnMap>
+		<SendMessage Value="Vorsicht, Feinde!" Type="0" />
+		<SendPacket  Value="rsfm 3 2 0 0"/>
+	  </OnMoveOnMap>
+      <OnMapClean>
+        <ChangePortalType IdOnMap="0" Type="2" />
+        <AddClockTime Value="3000" />
+        <SendMessage Value="Du hast alle Monster erledigt!" Type="0" />
+        <RefreshMapItems />
+      </OnMapClean>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="1" ToMap="9" ToX="14" ToY="28" />
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="1" ToMap="7" ToX="1" ToY="15" />
+      <!-- Monsters -->
+      <SummonMonster VNum="54" PositionX="21" PositionY="20">
+        <OnDeath>
+          <SummonMonster VNum="129" PositionX="18" PositionY="19" IsBonus="true">
+            <OnDeath>
+              <SummonMonster VNum="54" PositionX="18" PositionY="23" IsBonus="true" />
+            </OnDeath>
+          </SummonMonster>
+        </OnDeath>
+      </SummonMonster>
+      <SummonMonster VNum="54" PositionX="11" PositionY="13" IsBonus="true" />
+	  </OnCharacterDiscoveringMap>
+    </CreateMap>
+	<CreateMap Map="9" VNum="4103" IndexX="1" IndexY="10">
+      <OnCharacterDiscoveringMap>
+        <SendMessage Value="Wähle einen der Schlüssel!" Type="0" />
+      </OnCharacterDiscoveringMap>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="0" PositionX="14" PositionY="1" Type="1" ToMap="11" ToX="14" ToY="28" />
+      <SpawnPortal IdOnMap="2" PositionX="14" PositionY="28" Type="1" ToMap="8" ToX="14" ToY="1" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="5" ToMap="0" ToX="0" ToY="0">
+	    <OnTraversal>
+               <SendMessage Value="Bitte Warten.." Type="0"/>
+               <End Type="5"/>
+        </OnTraversal>
+	  </SpawnPortal>
+      <!-- Buttons -->
+      <SpawnButton VNumDisabled="1057" VNumEnabled="1057" Id="0">
+        <OnFirstEnable>
+          <ChangePortalType IdOnMap="3" Type="2" />
+          <SendMessage Value="Der Ausgang ist offen." Type="0" />
+          <RefreshMapItems />
+		  <RemoveAllButton />
+        </OnFirstEnable>
+      </SpawnButton>
+      <SpawnButton VNumDisabled="1057" VNumEnabled="1057" Id="1" >
+	  <OnFirstEnable>
+   	    <SendMessage Value="Vorsicht, Feinde!" Type="0" />
+		<SendPacket  Value="rsfm 3 2 0 0"/>
+	    <SummonMonster Vnum="54" IsBonus="true" />
+		<SummonMonster Vnum="54" IsBonus="true" />
+		<SummonMonster Vnum="54" IsBonus="true" />
+		<SummonMonster Vnum="54" IsBonus="true" />
+		<SummonMonster Vnum="54" IsBonus="true" />
+		<OnMapClean>
+		  <ChangePortalType IdOnMap="3" Type="2" />
+	      <RefreshMap />
+		</OnMapClean>	  
+		<RemoveAllButton />
+		</OnFirstEnable>
+	  </SpawnButton>
+    </CreateMap>
+	<!-- Waypoint to leftside -->
+	<CreateMap Map="10" VNum="4104" IndexX="2" IndexY="9">
+	  <OnMoveOnMap>
+		<SendMessage Value="Vorsicht, Feinde!" Type="0" />
+		<SendPacket  Value="rsfm 3 2 0 0"/>
+	  </OnMoveOnMap>
+	  <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="1" ToMap="2" ToX="1" ToY="15" />
+      <SpawnPortal IdOnMap="3" PositionX="1" PositionY="15" Type="1" ToMap="11" ToX="28" ToY="15" />
+	  <OnCharacterDiscoveringMap>
+		  <OnMapClean>
+			<ChangePortalType IdOnMap="3" Type="2" />
+			<SendMessage Value="Du hast alle Monster erledigt!" Type="0" />
+			<RefreshMapItems />
+		  </OnMapClean>
+		  <!-- Monsters -->
+		  <SummonMonster VNum="54" PositionX="17" PositionY="8" IsBonus="true">
+			<OnDeath>
+			  <SummonMonster VNum="54" PositionX="20" PositionY="20" IsBonus="true">
+				<OnDeath>
+				  <SummonMonster VNum="96" PositionX="9" PositionY="19" IsBonus="true">
+					<OnDeath>
+					  <SummonMonster VNum="96" PositionX="10" PositionY="11" IsBonus="true">
+						<OnDeath>
+						  <SummonMonster VNum="129" PositionX="10" PositionY="16" IsBonus="true" />
+						</OnDeath>
+					  </SummonMonster>
+					</OnDeath>
+				  </SummonMonster>
+				</OnDeath>
+			  </SummonMonster>
+			</OnDeath>
+		  </SummonMonster>
+	  </OnCharacterDiscoveringMap>
+    </CreateMap>
+	<CreateMap Map="11" VNum="4103" IndexX="1" IndexY="9">
+	  <OnMoveOnMap>
+		<SendMessage Value="Vorsicht, Feinde!" Type="0" />
+		<SendPacket  Value="rsfm 3 2 0 0"/>
+	  </OnMoveOnMap>
+	  <OnCharacterDiscoveringMap>
+      <OnMapClean>
+        <ChangePortalType IdOnMap="2" Type="2" />
+        <AddClockTime Value="2000" />
+        <SendMessage Value="Du hast alle Monster erledigt!" Type="0" />
+        <RefreshMapItems />
+      </OnMapClean>
+      <!-- Portals -->
+      <SpawnPortal IdOnMap="1" PositionX="28" PositionY="15" Type="1" ToMap="10" ToX="1" ToY="15" />
+      <SpawnPortal IdOnMap="2" PositionX="14" PositionY="28" Type="1" ToMap="9" ToX="14" ToY="1" />
+      <!-- Monsters -->
+      <SummonMonster VNum="129" PositionX="17" PositionY="19">
+        <OnDeath>
+          <SummonMonster VNum="129" PositionX="20" PositionY="21">
+            <OnDeath>
+              <SummonMonster VNum="129" PositionX="16" PositionY="11" />
+            </OnDeath>
+          </SummonMonster>
+        </OnDeath>
+      </SummonMonster>
+      <SummonMonster VNum="129" PositionX="8" PositionY="19" IsBonus="true" />
+	  </OnCharacterDiscoveringMap>
+    </CreateMap>
+  </InstanceEvents>
+</Definition>

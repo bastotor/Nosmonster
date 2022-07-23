@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Definition>
+	<Globals>
+		<Id Value="20" />
+		<Label Value="Witch Laurena" />
+		<GiantTeam />
+		<LevelMinimum Value="70" />
+		<LevelMaximum Value="99" />
+		<StartX Value="20" />
+		<StartY Value="38" />
+		<RequiredItems>
+			<Item VNum="5977" Amount="1"/>
+			<Item VNum="5984" Amount="1"/>
+		</RequiredItems>
+		<GiftItems>
+			<Item Amount="1" VNum="5983" />
+			<!-- Laurena's Gemstone -->
+			<Item Amount="1" MinTeamSize="1" MaxTeamSize="29" VNum="5989" />
+			<!-- Laurena's Fabled Witch's Chest (29) -->
+			<Item Amount="1" MinTeamSize="30" MaxTeamSize="39" VNum="5988" />
+			<!-- Laurena's Mysterious Ancient Witch's Chest (39) -->
+			<Item Amount="1" MinTeamSize="40" MaxTeamSize="40" VNum="5985" />
+			<!-- Laurena's Ancient Witch's Chest (40) -->
+		</GiftItems>
+		<Reputation Value="2250" />
+		<FamExp Value="200" />
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="2550" IndexX="20" IndexY="38">
+			<OnCharacterDiscoveringMap>
+				<GenerateClock Value="24000" />
+				<StartClock>
+					<OnTimeout>
+						<End Type="2"/>
+					</OnTimeout>
+				</StartClock>
+				<SetMonsterLockers Value="0" />
+				<SetButtonLockers Value="1" />
+			</OnCharacterDiscoveringMap>
+			<SpawnButton Id="0" PositionX="13" PositionY="22" VNumDisabled="1135" VNumEnabled="1136">
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<OnLockerOpen>
+				<ChangePortalType IdOnMap="0" Type="2" />
+				<RefreshMapItems />
+				<SendMessage Type="0" Value="¡La puerta se ha abierto!" />
+			</OnLockerOpen>
+			<SpawnPortal IdOnMap="0" PositionX="19" PositionY="3" ToMap="1" ToX="48" ToY="87" Type="1" />
+		</CreateMap>
+		<CreateMap Map="1" VNum="2514" IndexX="50" IndexY="50">
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<RefreshRaidGoals/>
+				<SummonNpc VNum="2330" PositionX="82" PositionY="29" Dir="2" />
+				<SummonNpc VNum="2330" PositionX="81" PositionY="35" Dir="3" />
+				<SummonNpc VNum="2330" PositionX="86" PositionY="33" Dir="7" />
+				<SummonNpc VNum="2330" PositionX="79" PositionY="26" Dir="1" />
+				<SummonNpc VNum="2330" PositionX="82" PositionY="29" Dir="3" />
+				<SummonNpc VNum="2330" PositionX="80" PositionY="27" Dir="6" />
+				<SummonNpc VNum="2330" PositionX="78" PositionY="23" Dir="5" />
+				<SummonNpc VNum="2330" PositionX="75" PositionY="22" Dir="6" />
+				<SummonNpc VNum="2330" PositionX="74" PositionY="21" Dir="7" />
+				<SummonNpc VNum="2329" PositionX="26" PositionY="63" Dir="2" />
+				<SummonNpc VNum="2329" PositionX="32" PositionY="69" Dir="1" />
+				<SummonNpc VNum="2329" PositionX="30" PositionY="67" Dir="2" />
+				<SummonNpc VNum="2329" PositionX="23" PositionY="65" Dir="4" />
+				<SummonNpc VNum="2329" PositionX="26" PositionY="63" Dir="7" />
+				<SummonNpc VNum="2329" PositionX="21" PositionY="61" Dir="3" />
+				<SummonNpc VNum="2329" PositionX="22" PositionY="59" Dir="6" />
+				<SummonNpc VNum="2329" PositionX="19" PositionY="56" Dir="6" />
+				<SummonNpc VNum="2329" PositionX="18" PositionY="55" Dir="4" />
+			</OnCharacterDiscoveringMap>
+			<SummonMonster VNum="2326" IsHostile="true" Move="true" PositionX="53" PositionY="59" IsBoss="true">
+				<UseSkillOnDamage SkillVNum="1306" HpPercent="67" />
+				<UseSkillOnDamage SkillVNum="1306" HpPercent="45" />
+				<UseSkillOnDamage SkillVNum="1306" HpPercent="30" />
+				<UseSkillOnDamage SkillVNum="1306" HpPercent="20" />
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+					<End Type="1"/>
+					<ThrowItem Amount="1" PackAmount="10" VNum="2804"/>
+					<ThrowItem Delay="3" VNum="5109" PackAmount="3" Amount="1" />
+					<ThrowItem Delay="6" MaxAmount="250000" MinAmount="230000" PackAmount="25" VNum="1046"/>
+				</OnDeath>
+			</SummonMonster>
+			<OnMoveOnMap>
+				<Wave Offset="1" Delay="30">
+				</Wave>
+				<Wave Offset="2" Delay="120">
+				</Wave>
+				<Wave Offset="14" Delay="120">
+				</Wave>
+			</OnMoveOnMap>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

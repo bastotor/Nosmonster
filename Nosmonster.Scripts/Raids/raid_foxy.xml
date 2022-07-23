@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Definition>
+	<Globals>
+		<Id Value="18" />
+		<Label Value="Foxy" />
+		<LevelMinimum Value="20" />
+		<LevelMaximum Value="99" />
+		<StartX Value="49" />
+		<StartY Value="75" />
+		<RequiredItems>
+			<Item VNum="5962" Amount="1" />
+		</RequiredItems>
+		<GiftItems>
+			<Item Amount="1" VNum="302" Design="18" IsRandomRare="true"/>
+		</GiftItems>
+		<Reputation Value="2500" />
+		<FamExp Value="200" />
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="1" VNum="2509">
+			<OnMoveMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<RefreshRaidGoals />
+			</OnMoveMap>
+			<SummonMonster VNum="2309" HasDelay="1" PositionX="66" PositionY="59" IsBoss="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<End Type="1" />
+					<ThrowItem MaxAmount="12000" MinAmount="8000" PackAmount="30" VNum="1046" />
+				</OnDeath>
+			</SummonMonster>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

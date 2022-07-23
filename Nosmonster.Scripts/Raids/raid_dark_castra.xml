@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Definition>
+	<Globals>
+		<Id Value="2" />
+		<Label Value="Dark Castra" />
+		<LevelMinimum Value="40" />
+		<LevelMaximum Value="99" />
+		<StartX Value="15" />
+		<StartY Value="172" />
+		<RequiredItems>
+			<Item VNum="1129" Amount="1" />
+		</RequiredItems>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="2501">
+			<SummonMonster VNum="245" PositionX="87" PositionY="164" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+				<OnNoticing Range="25">
+					<Effect Value="5100" />
+					<Move PositionX="138" PositionY="163">
+						<Effect Value="5101" />
+						<OnTarget>
+							<Effect Value="5099" />
+						</OnTarget>
+					</Move>
+				</OnNoticing>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="82" PositionY="117" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="81" PositionY="122" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="81" PositionY="113" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="79" PositionY="124" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="79" PositionY="111" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="25" PositionY="50" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="20" PositionY="119" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="18" PositionY="117" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="162" PositionY="54" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="159" PositionY="56" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="159" PositionY="51" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="158" PositionY="18" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="158" PositionY="14" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="158" PositionY="10" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="156" PositionY="54" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="15" PositionY="116" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="138" PositionY="164" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="133" PositionY="115" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="126" PositionY="115" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="12" PositionY="117" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="245" PositionX="10" PositionY="119" IsTarget="true" IsHostile="true" IsBoss="false" Move="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="294" PositionX="110" PositionY="28" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="276" PositionX="124" PositionY="80" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="161" PositionY="20" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="161" PositionY="16" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="161" PositionY="13" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="160" PositionY="11" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="158" PositionY="20" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="157" PositionY="9" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="156" PositionY="18" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="156" PositionY="15" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="268" PositionX="156" PositionY="12" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="99" PositionY="95" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="98" PositionY="83" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="97" PositionY="88" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="97" PositionY="85" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="96" PositionY="92" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="70" PositionY="66" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="57" PositionY="129" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="57" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="56" PositionY="132" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="56" PositionY="129" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="55" PositionY="152" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="55" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="55" PositionY="127" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="54" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="54" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="53" PositionY="132" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="41" PositionY="42" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="41" PositionY="40" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="41" PositionY="39" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="41" PositionY="37" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="129" PositionY="156" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="110" PositionY="95" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="110" PositionY="93" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="109" PositionY="91" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="107" PositionY="88" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="105" PositionY="97" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="102" PositionY="91" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="265" PositionX="101" PositionY="86" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="105" PositionY="138" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="105" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="104" PositionY="138" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="104" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="103" PositionY="138" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="103" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="102" PositionY="138" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="102" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="101" PositionY="138" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="264" PositionX="101" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="262" PositionX="131" PositionY="98" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="262" PositionX="131" PositionY="100" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="262" PositionX="130" PositionY="98" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="262" PositionX="128" PositionY="98" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="262" PositionX="127" PositionY="98" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="262" PositionX="127" PositionY="100" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="78" PositionY="8" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="75" PositionY="12" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="69" PositionY="11" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="55" PositionY="7" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="51" PositionY="11" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="39" PositionY="11" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="29" PositionY="7" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="22" PositionY="8" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="18" PositionY="34" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="17" PositionY="35" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="17" PositionY="33" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="16" PositionY="34" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="16" PositionY="33" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="15" PositionY="12" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="15" PositionY="9" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="129" PositionY="167" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="129" PositionY="166" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="129" PositionY="165" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="129" PositionY="164" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="129" PositionY="163" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="129" PositionY="162" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="128" PositionY="167" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="128" PositionY="166" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="128" PositionY="165" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="128" PositionY="164" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="128" PositionY="163" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="128" PositionY="162" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="127" PositionY="167" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="127" PositionY="166" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="127" PositionY="165" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="127" PositionY="164" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="127" PositionY="163" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="127" PositionY="162" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="261" PositionX="9" PositionY="11" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="257" PositionX="132" PositionY="99" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="257" PositionX="130" PositionY="99" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="257" PositionX="128" PositionY="99" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="257" PositionX="126" PositionY="99" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="256" PositionX="18" PositionY="35" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="256" PositionX="18" PositionY="33" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="256" PositionX="16" PositionY="35" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="79" PositionY="12" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="73" PositionY="8" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="66" PositionY="10" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="66" PositionY="7" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="60" PositionY="8" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="59" PositionY="12" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="54" PositionY="10" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="48" PositionY="8" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="45" PositionY="12" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="42" PositionY="9" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="34" PositionY="11" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="32" PositionY="8" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="29" PositionY="11" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="24" PositionY="9" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="20" PositionY="12" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="16" PositionY="7" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="255" PositionX="11" PositionY="8" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="254" PositionX="141" PositionY="164" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="254" PositionX="140" PositionY="167" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="254" PositionX="139" PositionY="163" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="254" PositionX="138" PositionY="168" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="254" PositionX="138" PositionY="162" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="254" PositionX="136" PositionY="166" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="254" PositionX="136" PositionY="162" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="254" PositionX="135" PositionY="164" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="57" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="56" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="56" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="56" PositionY="129" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="55" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="55" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="55" PositionY="129" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="54" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="54" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="54" PositionY="129" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="53" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="115" PositionY="24" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="114" PositionY="28" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="113" PositionY="31" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="112" PositionY="26" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="109" PositionY="25" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="108" PositionY="31" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="107" PositionY="28" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="253" PositionX="103" PositionY="26" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="251" PositionX="136" PositionY="49" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="251" PositionX="126" PositionY="52" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="251" PositionX="122" PositionY="46" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="249" PositionX="120" PositionY="54" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="249" PositionX="117" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="249" PositionX="117" PositionY="42" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="249" PositionX="111" PositionY="48" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="249" PositionX="106" PositionY="53" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="249" PositionX="105" PositionY="45" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="147" PositionY="55" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="146" PositionY="50" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="146" PositionY="45" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="145" PositionY="57" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="144" PositionY="43" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="107" PositionY="61" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="105" PositionY="61" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="104" PositionY="61" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="247" PositionX="102" PositionY="61" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="246" PositionX="72" PositionY="10" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="246" PositionX="70" PositionY="13" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="246" PositionX="64" PositionY="8" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="246" PositionX="52" PositionY="9" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="246" PositionX="47" PositionY="10" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="246" PositionX="39" PositionY="7" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="245" PositionX="25" PositionY="47" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="245" PositionX="20" PositionY="50" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="245" PositionX="25" PositionY="53" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="245" PositionX="30" PositionY="50" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="58" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="58" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="57" PositionY="132" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="57" PositionY="127" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="55" PositionY="132" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="55" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="53" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="53" PositionY="129" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="53" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="243" PositionX="53" PositionY="127" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="93" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="91" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="89" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="86" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="84" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="82" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="79" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="77" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="75" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="72" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="242" PositionX="73" PositionY="70" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="78" PositionY="114" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="77" PositionY="120" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="77" PositionY="116" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="76" PositionY="119" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="76" PositionY="117" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="76" PositionY="114" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="75" PositionY="119" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="75" PositionY="117" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="75" PositionY="116" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="75" PositionY="114" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="74" PositionY="120" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="74" PositionY="117" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="39" PositionY="42" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="39" PositionY="37" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="15" PositionY="126" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="11" PositionY="69" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="10" PositionY="69" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="10" PositionY="67" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="9" PositionY="69" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="9" PositionY="68" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="9" PositionY="67" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="8" PositionY="69" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="8" PositionY="67" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="241" PositionX="7" PositionY="68" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="82" PositionY="157" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="80" PositionY="37" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="79" PositionY="24" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="78" PositionY="40" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="78" PositionY="37" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="76" PositionY="21" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="74" PositionY="26" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="73" PositionY="35" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="72" PositionY="39" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="72" PositionY="33" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="70" PositionY="36" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="70" PositionY="23" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="69" PositionY="154" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="68" PositionY="159" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="62" PositionY="143" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="61" PositionY="158" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="58" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="57" PositionY="144" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="57" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="56" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="55" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="55" PositionY="129" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="54" PositionY="132" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="54" PositionY="131" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="54" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="53" PositionY="144" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="53" PositionY="129" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="52" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="52" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="48" PositionY="142" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="127" PositionY="80" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="127" PositionY="77" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="125" PositionY="76" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="123" PositionY="76" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="121" PositionY="80" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="237" PositionX="121" PositionY="78" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="235" PositionX="11" PositionY="68" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="235" PositionX="11" PositionY="67" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="235" PositionX="7" PositionY="69" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="235" PositionX="7" PositionY="67" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="28" PositionY="78" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="26" PositionY="78" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="24" PositionY="50" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="23" PositionY="78" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="21" PositionY="78" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="17" PositionY="78" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="14" PositionY="78" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="12" PositionY="93" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="12" PositionY="86" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="12" PositionY="100" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="10" PositionY="89" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="10" PositionY="82" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="10" PositionY="105" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="9" PositionY="98" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="7" PositionY="94" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="7" PositionY="86" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="234" PositionX="7" PositionY="105" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="12" PositionY="25" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="12" PositionY="143" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="11" PositionY="24" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="11" PositionY="19" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="10" PositionY="17" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="10" PositionY="143" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="9" PositionY="27" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="8" PositionY="28" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="232" PositionX="7" PositionY="19" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="71" PositionY="107" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="71" PositionY="103" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="70" PositionY="97" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="70" PositionY="112" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="70" PositionY="100" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="66" PositionY="96" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="66" PositionY="115" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="62" PositionY="95" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="61" PositionY="116" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="57" PositionY="95" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="55" PositionY="96" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="55" PositionY="116" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="51" PositionY="97" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="51" PositionY="113" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="50" PositionY="110" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="49" PositionY="105" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="95" PositionX="48" PositionY="101" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="92" PositionX="18" PositionY="149" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="92" PositionX="13" PositionY="149" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="80" PositionX="21" PositionY="148" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="80" PositionX="20" PositionY="148" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="80" PositionX="18" PositionY="148" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="80" PositionX="16" PositionY="148" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="80" PositionX="14" PositionY="148" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="80" PositionX="12" PositionY="148" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="80" PositionX="10" PositionY="148" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="80" PositionX="8" PositionY="148" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="79" PositionX="74" PositionY="127" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="79" PositionX="70" PositionY="126" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="79" PositionX="67" PositionY="124" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="79" PositionX="65" PositionY="122" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="79" PositionX="63" PositionY="121" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="20" PositionY="137" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="20" PositionY="135" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="20" PositionY="132" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="20" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="20" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="20" PositionY="126" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="20" PositionY="124" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="12" PositionY="19" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="11" PositionY="27" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="11" PositionY="22" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="10" PositionY="137" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="10" PositionY="135" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="10" PositionY="132" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="10" PositionY="130" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="10" PositionY="128" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="10" PositionY="126" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="10" PositionY="124" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="9" PositionY="20" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="8" PositionY="25" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="8" PositionY="23" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SpawnButton PositionX="78" PositionY="117" VNumDisabled="1135" VNumEnabled="1136" Id="0">
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<SpawnButton PositionX="76" PositionY="29" VNumDisabled="1135" VNumEnabled="1136" Id="1">
+				<OnEnable>
+					<Teleport PositionX="76" PositionY="29" DestinationX="76" DestinationY="114" />
+				</OnEnable>
+				<OnDisable>
+					<Teleport PositionX="76" PositionY="29" DestinationX="76" DestinationY="114" />
+				</OnDisable>
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<SpawnButton PositionX="39" PositionY="39" VNumDisabled="1135" VNumEnabled="1136" Id="2">
+				<OnFirstEnable>
+					<SendMessage Value="The enemies are getting reinforcements!" Type="0" />
+					<SummonMonster VNum="245" PositionX="18" PositionY="32" />
+					<SummonMonster VNum="245" PositionX="9" PositionY="36" />
+					<SummonMonster VNum="245" PositionX="20" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="18" PositionY="33" />
+					<SummonMonster VNum="245" PositionX="8" PositionY="32" />
+					<SummonMonster VNum="245" PositionX="27" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="33" PositionY="31" />
+					<SummonMonster VNum="245" PositionX="21" PositionY="33" />
+					<SummonMonster VNum="245" PositionX="33" PositionY="32" />
+					<SummonMonster VNum="245" PositionX="11" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="12" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="23" PositionY="34" />
+					<SummonMonster VNum="245" PositionX="31" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="21" PositionY="33" />
+					<SummonMonster VNum="245" PositionX="23" PositionY="34" />
+					<SummonMonster VNum="245" PositionX="23" PositionY="32" />
+					<SummonMonster VNum="245" PositionX="12" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="20" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="19" PositionY="35" />
+					<SummonMonster VNum="245" PositionX="19" PositionY="32" />
+					<SummonMonster VNum="245" PositionX="27" PositionY="36" />
+					<SummonMonster VNum="245" PositionX="20" PositionY="31" />
+					<SummonMonster VNum="245" PositionX="20" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="22" PositionY="33" />
+					<SummonMonster VNum="245" PositionX="33" PositionY="37" />
+					<SummonMonster VNum="245" PositionX="33" PositionY="36" />
+					<SummonMonster VNum="245" PositionX="13" PositionY="34" />
+					<SummonMonster VNum="245" PositionX="25" PositionY="35" />
+					<SummonMonster VNum="245" PositionX="27" PositionY="34" />
+					<SummonMonster VNum="245" PositionX="13" PositionY="34" />
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<SpawnButton PositionX="167" PositionY="155" VNumDisabled="1135" VNumEnabled="1136" Id="3">
+				<OnFirstEnable>
+					<SendMessage Value="The enemies are getting reinforcements!" Type="0" />
+					<SummonMonster VNum="259" PositionX="137" PositionY="125" />
+					<SummonMonster VNum="259" PositionX="137" PositionY="132"  />
+					<SummonMonster VNum="259" PositionX="126" PositionY="139" />
+					<SummonMonster VNum="259" PositionX="126" PositionY="134" />
+					<SummonMonster VNum="259" PositionX="124" PositionY="141" />
+					<SummonMonster VNum="259" PositionX="134" PositionY="138" />
+					<SummonMonster VNum="259" PositionX="126" PositionY="150"  />
+					<SummonMonster VNum="259" PositionX="136" PositionY="147"  />
+					<SummonMonster VNum="259" PositionX="125" PositionY="156"  />
+					<SummonMonster VNum="259" PositionX="122" PositionY="153"  />
+					<SummonMonster VNum="259" PositionX="133" PositionY="141"  />
+					<SummonMonster VNum="259" PositionX="136" PositionY="146"  />
+					<SummonMonster VNum="259" PositionX="122" PositionY="143"  />
+					<SummonMonster VNum="259" PositionX="131" PositionY="141"  />
+					<SummonMonster VNum="259" PositionX="136" PositionY="159"  />
+					<SummonMonster VNum="259" PositionX="130" PositionY="134"  />
+					<SummonMonster VNum="259" PositionX="125" PositionY="141"  />
+					<SummonMonster VNum="259" PositionX="123" PositionY="146"  />
+					<SummonMonster VNum="259" PositionX="136" PositionY="132"  />
+					<SummonMonster VNum="259" PositionX="128" PositionY="124"  />
+					<SummonMonster VNum="259" PositionX="136" PositionY="147"  />
+					<SummonMonster VNum="259" PositionX="129" PositionY="126"  />
+					<SummonMonster VNum="259" PositionX="125" PositionY="139"  />
+					<SummonMonster VNum="259" PositionX="127" PositionY="138"  />
+					<SummonMonster VNum="259" PositionX="126" PositionY="140"  />
+					<SummonMonster VNum="259" PositionX="124" PositionY="132"  />
+					<SummonMonster VNum="259" PositionX="128" PositionY="138"  />
+					<SummonMonster VNum="259" PositionX="122" PositionY="136"  />
+					<SummonMonster VNum="259" PositionX="123" PositionY="136"  />
+					<SummonMonster VNum="259" PositionX="129" PositionY="145"  />
+					<SummonMonster VNum="259" PositionX="133" PositionY="136"  />
+					<SummonMonster VNum="259" PositionX="126" PositionY="138"  />
+					<SummonMonster VNum="259" PositionX="126" PositionY="126"  />
+					<SummonMonster VNum="259" PositionX="134" PositionY="139"  />
+					<SummonMonster VNum="259" PositionX="127" PositionY="147"  />
+					<SummonMonster VNum="259" PositionX="134" PositionY="148"  />
+					<SummonMonster VNum="259" PositionX="129" PositionY="134"  />
+					<SummonMonster VNum="259" PositionX="136" PositionY="134"  />
+					<SummonMonster VNum="259" PositionX="124" PositionY="146"  />
+					<SummonMonster VNum="259" PositionX="125" PositionY="139"  />
+					<SummonMonster VNum="259" PositionX="123" PositionY="141"  />
+					<SummonMonster VNum="259" PositionX="125" PositionY="153"  />
+					<SummonMonster VNum="259" PositionX="126" PositionY="141"  />
+					<SummonMonster VNum="259" PositionX="129" PositionY="153"  />
+					<SummonMonster VNum="259" PositionX="134" PositionY="150"  />
+					<SummonMonster VNum="259" PositionX="129" PositionY="125"  />
+					<SummonMonster VNum="259" PositionX="124" PositionY="153"  />
+					<SummonMonster VNum="259" PositionX="134" PositionY="134" />
+					<SummonMonster VNum="259" PositionX="131" PositionY="127"  />
+					<SummonMonster VNum="259" PositionX="125" PositionY="153"  />
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<SpawnButton PositionX="159" PositionY="54" VNumDisabled="1135" VNumEnabled="1136" Id="4">
+				<OnFirstEnable>
+					<SendMessage Value="The enemies are getting reinforcements!" Type="0" />
+					<SummonMonster VNum="276" PositionX="157" PositionY="54" />
+					<SummonMonster VNum="276" PositionX="161" PositionY="54" />
+					<SummonMonster VNum="276" PositionX="159" PositionY="55" />
+					<SummonMonster VNum="276" PositionX="159" PositionY="54" />
+					<SummonMonster VNum="276" PositionX="159" PositionY="53" />
+					<SummonMonster VNum="276" PositionX="159" PositionY="56" />
+					<SummonMonster VNum="276" PositionX="157" PositionY="56" />
+					<SummonMonster VNum="276" PositionX="161" PositionY="56" />
+					<SummonMonster VNum="276" PositionX="161" PositionY="52" />
+					<SummonMonster VNum="276" PositionX="159" PositionY="55" />
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<SpawnButton PositionX="15" PositionY="119" VNumDisabled="1135" VNumEnabled="1136" Id="5">
+				<OnEnable>
+					<Teleport PositionX="15" PositionY="119" DestinationX="25" DestinationY="53" />
+				</OnEnable>
+				<OnDisable>
+					<Teleport PositionX="15" PositionY="119" DestinationX="25" DestinationY="53" />
+				</OnDisable>
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<SetMonsterLockers Value="22" />
+			<SetButtonLockers Value="6" />
+			<OnLockerOpen>
+				<ChangePortalType Type="2" IdOnMap="0" />
+				<RefreshMapItems />
+				<SendMessage Value="The door has been opened!" Type="0" />
+			</OnLockerOpen>
+			<SpawnPortal IdOnMap="0" PositionX="173" PositionY="14" Type="1" ToMap="1" ToX="21" ToY="58" />
+			<GenerateClock Value="72000" />
+			<StartClock />
+		</CreateMap>
+		<CreateMap Map="1" VNum="2502">
+			<OnMoveMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<RefreshRaidGoals />
+			</OnMoveMap>
+			<SummonMonster VNum="285" HasDelay="30" PositionX="21" PositionY="12" IsBoss="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<End Type="1" />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="71" PositionX="9" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="11" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="13" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="14" PositionY="54" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="15" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="17" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="19" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="20" PositionY="54" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="22" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="24" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="25" PositionY="54" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="27" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="29" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="32" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="71" PositionX="34" PositionY="56" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="850" PositionX="20" PositionY="45" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="850" PositionX="17" PositionY="41" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="294" PositionX="25" PositionY="15" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="294" PositionX="23" PositionY="15" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="294" PositionX="21" PositionY="15" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="294" PositionX="19" PositionY="15" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+			<SummonMonster VNum="294" PositionX="17" PositionY="15" IsTarget="false" IsHostile="true" IsBoss="false" Move="true" />
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

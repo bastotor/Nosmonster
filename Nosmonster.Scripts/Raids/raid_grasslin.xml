@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Definition>
+	<Globals>
+		<Id Value="7" />
+		<Label Value="Grasslin" />
+		<LevelMinimum Value="15"/>
+		<LevelMaximum Value="99"/>
+		<StartX Value="20" />
+		<StartY Value="50" />
+		<RequiredItems>
+			<Item VNum="1234" Amount="1"/>
+		</RequiredItems>
+		<GiftItems>
+			<Item Amount="1" VNum="302" Design="7" IsRandomRare="true"/>
+		</GiftItems>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="2510">
+			<SpawnButton PositionX="19" PositionY="25" VNumDisabled="1135" VNumEnabled="1136" Id="0">
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<SetMonsterLockers Value="0" />
+			<SetButtonLockers Value="1" />
+			<OnLockerOpen>
+				<ChangePortalType Type="2" IdOnMap="0" />
+				<RefreshMapItems />
+				<SendMessage Value="The door has been opened!" Type="0" />
+			</OnLockerOpen>
+			<SpawnPortal IdOnMap="0" PositionX="19" PositionY="8" Type="1" ToMap="1" ToX="16" ToY="40" />
+			<GenerateClock Value="24000" />
+			<StartClock />
+		</CreateMap>
+		<CreateMap Map="1" VNum="52">
+			<OnMoveOnMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<RefreshRaidGoals/>
+			</OnMoveOnMap>
+			<SummonMonster VNum="450" PositionX="25" PositionY="24" IsBoss="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+					<End Type="1"/>
+					<ThrowItem VNum="1030" Amount="20" PackAmount="5"/>
+					<ThrowItem VNum="2282" Amount="20" PackAmount="5"/>
+					<ThrowItem VNum="1046" PackAmount="30" MinAmount="800000" MaxAmount="100000"/>
+				</OnDeath>
+			</SummonMonster>
+			<OnMoveOnMap>
+				<Wave Offset="1" Delay="60">
+					<SendMessage Value="The enemies receive support!" Type="0"/>
+					<SummonMonster VNum="451" PositionX="29" PositionY="23"/>
+					<SummonMonster VNum="451" PositionX="30" PositionY="25"/>
+					<SummonMonster VNum="451" PositionX="28" PositionY="24"/>
+					</Wave>
+				</OnMoveOnMap>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

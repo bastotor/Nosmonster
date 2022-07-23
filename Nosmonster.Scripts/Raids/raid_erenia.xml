@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Definition>
+	<Globals>
+		<Id Value="24" />
+		<Label Value="Goddess Erenia" />
+		<LevelMinimum Value="90"/>
+		<LevelMaximum Value="99"/>
+		<StartX Value="84" />
+		<StartY Value="102" />
+		<Reputation Value="7500" />
+		<RequiredItems>
+			<Item VNum="5882" Amount="1"/>
+		</RequiredItems>
+		<GiftItems>
+			<Item Amount="1" VNum="302" Design="24" IsRandomRare="true"/>
+		</GiftItems>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="2605" >
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="10" />
+				<SetButtonLockers Value="0" />
+				<SendMessage Value="The first Test of Erenia has Already begun!" Type="7" />
+			</OnCharacterDiscoveringMap>
+			<SendMessage Value="The first Test of Erenia has Already begun!" Type="7" />
+			<SummonMonster VNum="2519" PositionX="95" PositionY="123" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="99" PositionY="116" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="99" PositionY="102" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="91" PositionY="94" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="79" PositionY="92" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="74" PositionY="101" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="77" PositionY="111" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="80" PositionY="117" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="86" PositionY="107" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2519" PositionX="81" PositionY="100" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<OnLockerOpen>
+				<ChangePortalType Type="2" IdOnMap="0" />
+				<RefreshMapItems/>
+				<SendMessage Value="The portal is open!" Type="0" />
+			</OnLockerOpen>
+			<GenerateClock Value="24000"/>
+			<StartClock/>
+			<SpawnPortal IdOnMap="0" PositionX="90" PositionY="151" Type="1" ToMap="1" ToX="89" ToY="166" />
+		</CreateMap>
+		<CreateMap Map="1" VNum="2605" >
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="6" />
+				<SetButtonLockers Value="0" />
+				<SendMessage Value="The second Test of Erenia started!" Type="7" />
+				<RefreshRaidGoals />
+				<RefreshMapItems />
+				<SendMessage Value="The second Test of Erenia started!" Type="7" />
+			</OnCharacterDiscoveringMap>
+			<SummonMonster VNum="2555" PositionX="69" IsHostile="true" PositionY="212" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2555" PositionX="131" IsHostile="true" PositionY="265" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2555" PositionX="207" IsHostile="true" PositionY="268" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2555" PositionX="232" IsHostile="true" PositionY="233" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2555" PositionX="235" IsHostile="true" PositionY="167" IsTarget="true">
+				<OnDeath>
+					<SummonMonster VNum="2600" PositionX="235" IsHostile="true" PositionY="167" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker/>
+							<RefreshRaidGoals/>
+						</OnDeath>
+					</SummonMonster>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+				</OnDeath>
+			</SummonMonster>
+			<OnLockerOpen>
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+				<ChangePortalType Type="2" IdOnMap="0" />
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+				<RefreshMapItems/>
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+			</OnLockerOpen>
+			<GenerateClock Value="24000"/>
+			<StartClock/>
+			<SpawnPortal IdOnMap="0" PositionX="235" PositionY="170" Type="1" ToMap="2" ToX="215" ToY="132" />
+		</CreateMap>
+		<CreateMap Map="2" VNum="2605" >
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<SendMessage Value="The third Test of Erenia started!" Type="0" />
+				<RefreshRaidGoals />
+				<RefreshMapItems />
+				<SummonMonster VNum="2552" PositionX="242" IsHostile="true" Move="true" PositionY="107" IsTarget="true">
+					<OnDeath>
+						<RemoveMonsterLocker/>
+						<RefreshRaidGoals/>
+					</OnDeath>
+				</SummonMonster>
+			</OnCharacterDiscoveringMap>
+			<OnLockerOpen>
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+				<ChangePortalType Type="2" IdOnMap="0" />
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+				<RefreshMapItems/>
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+			</OnLockerOpen>
+			<GenerateClock Value="24000"/>
+			<StartClock/>
+			<SpawnPortal IdOnMap="0" PositionX="251" PositionY="98" Type="1" ToMap="3" ToX="160" ToY="174" />
+		</CreateMap>
+		<CreateMap Map="3" VNum="2605">
+			<GenerateClock Value="24000"/>
+			<StartClock/>
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<SendMessage Value="You will never Defeat me! ~ The Goddess." Type="0" />
+				<RefreshRaidGoals />
+				<RefreshMapItems />
+			</OnCharacterDiscoveringMap>
+			<SummonMonster VNum="2514" PositionX="160" PositionY="131" Move="true" IsBoss="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+					<End Type="1"/>
+					<ThrowItem VNum="1046" PackAmount="30" MinAmount="100000" MaxAmount="150000"/>
+				</OnDeath>
+			</SummonMonster>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

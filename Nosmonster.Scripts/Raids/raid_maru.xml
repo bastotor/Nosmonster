@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Definition>
+	<Globals>
+		<Id Value="19" />
+		<Label Value="Maru the Milennial Tiger" />
+		<LevelMinimum Value="25" />
+		<Team/>
+		<LevelMaximum Value="99" />
+		<StartX Value="20" />
+		<StartY Value="38" />
+		<RequiredItems>
+			<Item VNum="5970" Amount="1"/>
+		</RequiredItems>
+		<GiftItems>
+			<Item Amount="1" VNum="5971" Design="0" IsRandomRare="0"/>
+		</GiftItems>
+		<Reputation Value="500" />
+		<FamExp Value="300" />
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="2580" IndexX="24" IndexY="44">
+			<OnCharacterDiscoveringMap>
+				<GenerateClock Value="24000" />
+				<StartClock>
+					<OnTimeout>
+						<End Type="2"/>
+					</OnTimeout>
+				</StartClock>
+				<SetMonsterLockers Value="0" />
+				<SetButtonLockers Value="1" />
+			</OnCharacterDiscoveringMap>
+			<SpawnButton Id="0" PositionX="22" PositionY="22" VNumDisabled="1135" VNumEnabled="1136">
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<OnLockerOpen>
+				<ChangePortalType IdOnMap="0" Type="2" />
+				<RefreshMapItems />
+				<SendMessage Type="0" Value="Door now open!" />
+			</OnLockerOpen>
+			<SpawnPortal IdOnMap="0" PositionX="26" PositionY="5" ToMap="1" ToX="19" ToY="42" Type="1" />
+		</CreateMap>
+		<CreateMap Map="1" VNum="2506" IndexX="20" IndexY="42">
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<RefreshRaidGoals/>
+			</OnCharacterDiscoveringMap>
+			<SummonMonster VNum="2316" IsHostile="true" Move="true" PositionX="18" PositionY="26" IsBoss="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+					<End Type="1"/>
+					<ThrowItem Delay="6" MaxAmount="50000" MinAmount="30000" PackAmount="25" VNum="1046"/>
+				</OnDeath>
+			</SummonMonster>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

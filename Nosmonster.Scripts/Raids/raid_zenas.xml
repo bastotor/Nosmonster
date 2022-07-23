@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Definition>
+	<Globals>
+		<Id Value="23" />
+		<Label Value="Goddess Zenas" />
+		<MediumTeam />
+		<LevelMinimum Value="90"/>
+		<LevelMaximum Value="99"/>
+		<StartX Value="84" />
+		<StartY Value="102" />
+		<Reputation Value="7500" />
+		<RequiredItems>
+			<Item VNum="5883" Amount="1"/>
+		</RequiredItems>
+		<GiftItems>
+			<Item Amount="1" VNum="302" Design="23" IsRandomRare="true"/>
+		</GiftItems>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="2602" >
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="10" />
+				<SetButtonLockers Value="0" />
+				<SendMessage Value="The first Test of Zenas has Already begun!" Type="7" />
+			</OnCharacterDiscoveringMap>
+			<SendMessage Value="The first Test of Zenas has Already begun!" Type="7" />
+			<SummonMonster VNum="2506" PositionX="95" PositionY="123" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="99" PositionY="116" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="99" PositionY="102" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="91" PositionY="94" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="79" PositionY="92" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="74" PositionY="101" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="77" PositionY="111" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="80" PositionY="117" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="86" PositionY="107" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="81" PositionY="100" Move="true" IsHostile="true" IsBoss="false" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+				</OnDeath>
+			</SummonMonster>
+			<OnLockerOpen>
+				<ChangePortalType Type="2" IdOnMap="0" />
+				<RefreshMapItems/>
+				<SendMessage Value="The portal is open!" Type="0" />
+			</OnLockerOpen>
+			<GenerateClock Value="24000"/>
+			<StartClock/>
+			<SpawnPortal IdOnMap="0" PositionX="90" PositionY="151" Type="1" ToMap="1" ToX="89" ToY="164" />
+		</CreateMap>
+		<CreateMap Map="1" VNum="2602" >
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="2" />
+				<SendMessage Value="The second Test of Zenas started!" Type="7" />
+				<RefreshRaidGoals />
+				<RefreshMapItems />
+				<SendMessage Value="The second Test of Zenas started!" Type="7" />
+			</OnCharacterDiscoveringMap>
+			<SummonMonster VNum="2553" PositionX="160" IsHostile="true" Move="true" PositionY="270" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2508" PositionX="165" IsHostile="true" Move="true" PositionY="262"/>
+			<SummonMonster VNum="2508" PositionX="156" IsHostile="true" Move="true" PositionY="262"/>
+			<SummonMonster VNum="2508" PositionX="149" IsHostile="true" Move="true" PositionY="269"/>
+			<SummonMonster VNum="2508" PositionX="154" IsHostile="true" Move="true" PositionY="277"/>
+			<SummonMonster VNum="2508" PositionX="161" IsHostile="true" Move="true" PositionY="285"/>
+			<SummonMonster VNum="2508" PositionX="168" IsHostile="true" Move="true" PositionY="279"/>
+			<SpawnButton PositionY="270" PositionX="164" VNumDisabled="1135" VNumEnabled="1136" Id="0">
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+					<RefreshMapItems />
+				</OnFirstEnable>
+			</SpawnButton>
+			<SpawnButton PositionY="269" PositionX="155" VNumDisabled="1135" VNumEnabled="1136" Id="1">
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+					<RefreshMapItems />
+				</OnFirstEnable>
+			</SpawnButton>
+			<OnLockerOpen>
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+				<ChangePortalType Type="2" IdOnMap="0" />
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+				<RefreshMapItems/>
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+			</OnLockerOpen>
+			<GenerateClock Value="24000"/>
+			<StartClock/>
+			<SpawnPortal IdOnMap="0" PositionX="160" PositionY="241" Type="1" ToMap="2" ToX="160" ToY="232" />
+		</CreateMap>
+		<CreateMap Map="2" VNum="2602" >
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="18" />
+				<SetButtonLockers Value="0" />
+				<SendMessage Value="The third Test of Zenas started!" Type="0" />
+				<RefreshRaidGoals />
+				<RefreshMapItems />
+			</OnCharacterDiscoveringMap>
+			<SummonMonster VNum="2506" PositionX="152" PositionY="210" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="152" PositionY="210" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="160" PositionY="207" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="160" PositionY="207" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="168" PositionY="209" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="168" PositionY="209" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="170" PositionY="217" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="170" PositionY="217" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="167" PositionY="225" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="167" PositionY="225" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="160" PositionY="228" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="160" PositionY="228" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="152" PositionY="225" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="152" PositionY="225" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="149" PositionY="217" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="149" PositionY="217" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<SummonMonster VNum="2506" PositionX="152" PositionY="209" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+				<OnDeath>
+					<RemoveMonsterLocker />
+					<RefreshRaidGoals />
+					<SummonMonster VNum="2506" PositionX="152" PositionY="209" Move="true" IsBoss="false" IsHostile="true" IsTarget="true">
+						<OnDeath>
+							<RemoveMonsterLocker />
+							<RefreshRaidGoals />
+						</OnDeath>
+					</SummonMonster>
+				</OnDeath>
+			</SummonMonster>
+			<OnLockerOpen>
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+				<ChangePortalType Type="2" IdOnMap="0" />
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+				<RefreshMapItems/>
+				<SendMessage Value="You will never be Strong enough to pass my Tests! ~ The Goddess." Type="0" />
+			</OnLockerOpen>
+			<GenerateClock Value="24000"/>
+			<StartClock/>
+			<SpawnPortal IdOnMap="0" PositionX="160" PositionY="203" Type="1" ToMap="3" ToX="159" ToY="172" />
+		</CreateMap>
+		<CreateMap Map="3" VNum="2602">
+			<GenerateClock Value="24000"/>
+			<StartClock/>
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<SendMessage Value="You will never Defeat me! ~ The Goddess." Type="0" />
+				<RefreshRaidGoals />
+				<RefreshMapItems />
+			</OnCharacterDiscoveringMap>
+			<SummonMonster VNum="2504" PositionX="160" PositionY="129" Move="true" IsBoss="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+					<End Type="1"/>
+					<ThrowItem VNum="1046" PackAmount="30" MinAmount="100000" MaxAmount="150000"/>
+				</OnDeath>
+			</SummonMonster>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

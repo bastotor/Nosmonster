@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Definition>
+	<Globals>
+		<Id Value="31" />
+		<Label Value="Carno Raid" />
+		<LevelMinimum Value="99"/>
+		<LevelMaximum Value="99"/>
+		<StartX Value="3" />
+		<StartY Value="51" />
+		<Reputation Value="4500" />
+		<RequieredItems>
+			<Item VNum="5785" Amount="1"/>
+		</RequieredItems>
+		<GiftItems>
+			<Item Amount="1" VNum="4461" Design="31" IsRandomRare="true"/>
+		</GiftItems>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="2639">
+			<OnCharacterDiscoveringMap>
+				<GenerateClock Value="9000" />
+				<StartClock>
+					<OnTimeout>
+						<End Type="2"/>
+					</OnTimeout>
+				</StartClock>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+			</OnCharacterDiscoveringMap>
+			<RefreshRaidGoals/>
+			<SummonMonster VNum="3028" IsHostile="true" Move="true" PositionX="55" PositionY="48" IsBoss="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+					<End Type="1"/>
+					<ThrowItem VNum="2411" PackAmount="10" MinAmount="2" MaxAmount="2"/>
+					<ThrowItem VNum="2406" PackAmount="5"/>
+					<ThrowItem VNum="2459" PackAmount="5"/>
+					<ThrowItem VNum="2366" PackAmount="5"/>
+					<ThrowItem VNum="2410" PackAmount="2"/>
+					<ThrowItem VNum="2416" PackAmount="3"/>
+					<ThrowItem VNum="2408" PackAmount="3"/>
+					<ThrowItem VNum="2460" PackAmount="10" MinAmount="2" MaxAmount="2"/>
+					<ThrowItem VNum="1046" PackAmount="30" MinAmount="15000" MaxAmount="30000"/>
+				</OnDeath>
+			</SummonMonster>
+			<OnMoveOnMap>
+				<Wave Delay="30" Offset="1">
+					<SendMessage Type="0" Value="Carno receive's support!" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="47" PositionY="51" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="43" PositionY="54" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="39" PositionY="56" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="43" PositionY="60" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="45" PositionY="58" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="48" PositionY="55" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="48" PositionY="64" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="49" PositionY="61" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="51" PositionY="58" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="55" PositionY="58" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="55" PositionY="62" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="55" PositionY="66" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="62" PositionY="65" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="61" PositionY="61" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="59" PositionY="57" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="62" PositionY="55" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="65" PositionY="58" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="68" PositionY="61" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="72" PositionY="55" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="68" PositionY="53" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="65" PositionY="52" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="66" PositionY="48" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="69" PositionY="48" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="73" PositionY="48" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="72" PositionY="41" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="68" PositionY="42" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="65" PositionY="44" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="63" PositionY="40" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="65" PositionY="38" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="68" PositionY="35" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="59" PositionY="38" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="60" PositionY="35" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="62" PositionY="32" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="55" PositionY="30" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="55" PositionY="34" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="55" PositionY="38" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="51" PositionY="38" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="50" PositionY="35" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="49" PositionY="32" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="48" PositionY="41" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="45" PositionY="38" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="43" PositionY="36" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="39" PositionY="41" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="42" PositionY="42" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="46" PositionY="44" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="45" PositionY="48" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="41" PositionY="48" VNum="3099" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="38" PositionY="48" VNum="3099" />
+				</Wave>
+			</OnMoveOnMap>
+
+		</CreateMap>
+	</InstanceEvents>
+</Definition>

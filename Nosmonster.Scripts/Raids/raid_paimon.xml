@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Definition>
+	<Globals>
+		<Id Value="33" />
+		<Label Value="Evil Overlord Paimon" />
+		<LevelMinimum Value="99" />
+		<LevelMaximum Value="99" />
+		<StartX Value="7" />
+		<StartY Value="40" />
+		<Reputation Value="4500" />
+		<RequiredItems>
+			<Item Amount="1" VNum="9762" />
+		</RequiredItems>
+		<GiftItems>
+			<Item Amount="1" Design="33" IsRandomRare="true" VNum="4546" />
+		</GiftItems>
+	</Globals>
+	<InstanceEvents>
+		<CreateMap Map="0" VNum="5440" IndexX="7" IndexY="40">
+			<OnCharacterDiscoveringMap>
+				<GenerateClock Value="9000" />
+				<StartClock>
+					<OnTimeout>
+						<End Type="2"/>
+					</OnTimeout>
+				</StartClock>
+				<SetMonsterLockers Value="0" />
+				<SetButtonLockers Value="1" />
+			</OnCharacterDiscoveringMap>
+			<SpawnButton Id="0" PositionX="38" PositionY="39" VNumDisabled="1135" VNumEnabled="1136">
+				<OnFirstEnable>
+					<RemoveButtonLocker />
+					<RefreshRaidGoals />
+				</OnFirstEnable>
+			</SpawnButton>
+			<OnLockerOpen>
+				<ChangePortalType IdOnMap="0" Type="2" />
+				<RefreshMapItems />
+				<SendMessage Type="0" Value="The door has been opened!" />
+			</OnLockerOpen>
+			<SpawnPortal IdOnMap="0" PositionX="61" PositionY="39" ToMap="1" ToX="39" ToY="73" Type="1" />
+		</CreateMap>
+		<CreateMap Map="1" VNum="5441" IndexX="39" IndexY="73">
+			<OnCharacterDiscoveringMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<RefreshRaidGoals/>
+			</OnCharacterDiscoveringMap>
+			<OnMoveOnMap>
+				<SetMonsterLockers Value="1" />
+				<SetButtonLockers Value="0" />
+				<RefreshRaidGoals />
+			</OnMoveOnMap>
+			<SummonMonster VNum="3124" IsHostile="true" Move="false" PositionX="39" PositionY="9" IsBoss="true">
+				<OnDeath>
+					<RemoveMonsterLocker/>
+					<RefreshRaidGoals/>
+					<End Type="1"/>
+					<ThrowItem Delay="3" VNum="1046" PackAmount="10" MinAmount="120000" MaxAmount="150000"/>
+					<ThrowItem Delay="6" VNum="1046" PackAmount="10" MinAmount="120000" MaxAmount="150000"/>
+					<ThrowItem Delay="9" VNum="1046" PackAmount="10" MinAmount="120000" MaxAmount="150000"/>
+					<ThrowItem VNum="1363" PackAmount="4" Amount="1" />
+					<ThrowItem VNum="1364" PackAmount="4" Amount="1" />
+				</OnDeath>
+			</SummonMonster>
+			<OnMoveOnMap>
+				<Wave Delay="60" Offset="1">
+					<SendMessage Type="0" Value="The Lord is calling for help!" />
+					<!-- Commander -->
+					<SummonMonster IsHostile="true" Move="true" PositionX="43" PositionY="36" VNum="987" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="39" PositionY="34" VNum="987" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="35" PositionY="37" VNum="987" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="34" PositionY="41" VNum="987" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="39" PositionY="44" VNum="987" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="44" PositionY="41" VNum="987" />
+					<!-- Berseker -->
+					<SummonMonster IsHostile="true" Move="true" PositionX="28" PositionY="39" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="31" PositionY="32" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="36" PositionY="29" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="42" PositionY="29" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="47" PositionY="31" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="50" PositionY="35" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="50" PositionY="39" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="49" PositionY="44" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="46" PositionY="48" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="41" PositionY="50" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="36" PositionY="50" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="32" PositionY="48" VNum="984" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="29" PositionY="44" VNum="984" />
+					<!-- Satyros -->
+					<SummonMonster IsHostile="true" Move="true" PositionX="27" PositionY="32" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="32" PositionY="29" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="39" PositionY="26" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="46" PositionY="28" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="50" PositionY="32" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="52" PositionY="37" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="52" PositionY="42" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="49" PositionY="47" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="44" PositionY="51" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="39" PositionY="52" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="33" PositionY="51" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="29" PositionY="48" VNum="983" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="27" PositionY="42" VNum="983" />
+					<!-- Assasin -->
+					<SummonMonster IsHostile="true" Move="true" PositionX="26" PositionY="27" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="33" PositionY="22" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="45" PositionY="22" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="53" PositionY="26" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="58" PositionY="34" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="58" PositionY="42" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="55" PositionY="50" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="48" PositionY="56" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="40" PositionY="58" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="33" PositionY="58" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="25" PositionY="52" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="21" PositionY="45" VNum="785" />
+					<SummonMonster IsHostile="true" Move="true" PositionX="21" PositionY="36" VNum="785" />
+
+				</Wave>
+			</OnMoveOnMap>
+		</CreateMap>
+	</InstanceEvents>
+</Definition>
