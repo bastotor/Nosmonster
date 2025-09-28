@@ -1,1 +1,1 @@
-ventus-emulator
+emulator
