@@ -1,0 +1,7 @@
+plugins_directory: plugins
+
+database:
+  connection_string: "Server=localhost;Database=NosEmu;Trusted_Connection=True;TrustServerCertificate=True"
+
+scripting:
+  scripts_directory: scripts
