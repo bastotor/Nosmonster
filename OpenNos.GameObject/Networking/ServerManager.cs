@@ -1671,15 +1671,20 @@ namespace OpenNos.GameObject.Networking
 
         private static Portal CreateArenaPortal(short sourceMapId, short sourceX, short sourceY)
         {
+            return CreatePortal(sourceMapId, sourceX, sourceY, 1, 0, 0, -1);
+        }
+
+        private static Portal CreatePortal(short sourceMapId, short sourceX, short sourceY, short destinationMapId, short destinationX, short destinationY, short portalType)
+        {
             return new Portal
             {
                 SourceMapId = sourceMapId,
                 SourceX = sourceX,
                 SourceY = sourceY,
-                DestinationMapId = 1,
-                DestinationX = 0,
-                DestinationY = 0,
-                Type = -1
+                DestinationMapId = destinationMapId,
+                DestinationX = destinationX,
+                DestinationY = destinationY,
+                Type = portalType
             };
         }
 
@@ -1690,16 +1695,7 @@ namespace OpenNos.GameObject.Networking
                 return;
             }
 
-            Portal portal = new Portal
-            {
-                SourceMapId = 2107,
-                SourceX = 10,
-                SourceY = 5,
-                DestinationMapId = 1,
-                DestinationX = 0,
-                DestinationY = 0,
-                Type = -1
-            };
+            Portal portal = CreatePortal(2107, 10, 5, 1, 0, 0, -1);
 
             void LoadSpecialistGemMap(short npcVNum)
             {
