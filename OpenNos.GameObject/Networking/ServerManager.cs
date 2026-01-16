@@ -1646,62 +1646,41 @@ namespace OpenNos.GameObject.Networking
 
         private void InitializeArenaInstances()
         {
-            if (DAOFactory.MapDAO.LoadById(2006) != null)
-            {
-                ArenaInstance = GenerateMapInstance(2006, MapInstanceType.NormalInstance, new InstanceBag());
-                ArenaInstance.IsPVP = true;
+            ArenaInstance = InitializeArenaInstance(2006, "The individual Arena has been loaded", 37, 15);
+            FamilyArenaInstance = InitializeArenaInstance(2106, "The Family Arena has been loaded", 38, 3);
+            ArenaInstance2 = InitializeArenaInstance(30008, "The NosMonsterV3 Arena has been loaded", 37, 15, ArenaInstance);
+        }
 
-                Portal portal = new Portal
-                {
-                    SourceMapId = 2006,
-                    SourceX = 37,
-                    SourceY = 15,
-                    DestinationMapId = 1,
-                    DestinationX = 0,
-                    DestinationY = 0,
-                    Type = -1
-                };
-                Console.WriteLine($"[Load] The individual Arena has been loaded");
-                ArenaInstance.CreatePortal(portal);
+        private MapInstance InitializeArenaInstance(short mapId, string logMessage, short sourceX, short sourceY, MapInstance portalTarget = null)
+        {
+            if (DAOFactory.MapDAO.LoadById(mapId) == null)
+            {
+                return null;
             }
 
-            if (DAOFactory.MapDAO.LoadById(2106) != null)
+            MapInstance arenaInstance = GenerateMapInstance(mapId, MapInstanceType.NormalInstance, new InstanceBag())
             {
-                FamilyArenaInstance = GenerateMapInstance(2106, MapInstanceType.NormalInstance, new InstanceBag());
-                FamilyArenaInstance.IsPVP = true;
+                IsPVP = true
+            };
 
-                Portal portal = new Portal
-                {
-                    SourceMapId = 2106,
-                    SourceX = 38,
-                    SourceY = 3,
-                    DestinationMapId = 1,
-                    DestinationX = 0,
-                    DestinationY = 0,
-                    Type = -1
-                };
-                Console.WriteLine($"[Load] The Family Arena has been loaded");
-                FamilyArenaInstance.CreatePortal(portal);
-            }
+            Console.WriteLine($"[Load] {logMessage}");
+            MapInstance targetInstance = portalTarget ?? arenaInstance;
+            targetInstance.CreatePortal(CreateArenaPortal(mapId, sourceX, sourceY));
+            return arenaInstance;
+        }
 
-            if (DAOFactory.MapDAO.LoadById(30008) != null)
+        private static Portal CreateArenaPortal(short sourceMapId, short sourceX, short sourceY)
+        {
+            return new Portal
             {
-                ArenaInstance2 = GenerateMapInstance(30008, MapInstanceType.NormalInstance, new InstanceBag());
-                ArenaInstance2.IsPVP = true;
-
-                Portal portal = new Portal
-                {
-                    SourceMapId = 30008,
-                    SourceX = 37,
-                    SourceY = 15,
-                    DestinationMapId = 1,
-                    DestinationX = 0,
-                    DestinationY = 0,
-                    Type = -1
-                };
-                Console.WriteLine($"[Load] The NosMonsterV3 Arena has been loaded");
-                ArenaInstance.CreatePortal(portal);
-            }
+                SourceMapId = sourceMapId,
+                SourceX = sourceX,
+                SourceY = sourceY,
+                DestinationMapId = 1,
+                DestinationX = 0,
+                DestinationY = 0,
+                Type = -1
+            };
         }
 
         private void InitializeSpecialistGemMaps()
