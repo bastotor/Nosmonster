@@ -1,6 +1,6 @@
-using log4net;
 using NosTale.Packets.Packets.ClientPackets;
 using OpenNos.Core;
+using OpenNos.Core.Bootstrapping;
 using OpenNos.DAL.EF.Helpers;
 using OpenNos.Data;
 using OpenNos.GameObject.Helpers;
@@ -10,10 +10,8 @@ using OpenNos.Master.Library.Data;
 using System;
 using System.Configuration;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Net.Sockets;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -71,11 +69,17 @@ namespace OpenNos.GameObject.Bootstrapping
 #if DEBUG
             Thread.Sleep(1000);
 #endif
-            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+            ConsoleStartup.InitializeCulture("en-US");
 
-            bool ignoreStartupMessages = false;
+            ConsoleStartupArguments startupArgs = ConsoleStartup.ParseArguments(args);
+            bool ignoreStartupMessages = startupArgs.IgnoreStartupMessages;
             _port = GetConfiguredPort();
-            ApplyArgs(args ?? Array.Empty<string>(), ref ignoreStartupMessages);
+            if (startupArgs.PortOverride.HasValue)
+            {
+                _port = startupArgs.PortOverride.Value;
+                Console.WriteLine("Port override: " + _port);
+            }
+            _ignoreTelemetry = startupArgs.IgnoreTelemetry;
 
             SetConsoleTitle();
             InitializeLogger();
@@ -97,31 +101,6 @@ namespace OpenNos.GameObject.Bootstrapping
 
         private int GetConfiguredPort() => Convert.ToInt32(ConfigurationManager.AppSettings[_options.PortSettingKey]);
 
-        private void ApplyArgs(string[] args, ref bool ignoreStartupMessages)
-        {
-            int portArgIndex = Array.FindIndex(args, s => s == "--port");
-            if (portArgIndex != -1
-                && args.Length >= portArgIndex + 1
-                && int.TryParse(args[portArgIndex + 1], out int portOverride))
-            {
-                _port = portOverride;
-                Console.WriteLine("Port override: " + _port);
-            }
-
-            foreach (string arg in args)
-            {
-                switch (arg)
-                {
-                    case "--nomsg":
-                        ignoreStartupMessages = true;
-                        break;
-                    case "--notelemetry":
-                        _ignoreTelemetry = true;
-                        break;
-                }
-            }
-        }
-
         private void SetConsoleTitle()
         {
             Console.Title = $"NosTale NosMonsterV3 - {_options.ServerName} [Port: {_port} - Language: {_options.Language}]";
@@ -129,17 +108,12 @@ namespace OpenNos.GameObject.Bootstrapping
 
         private void InitializeLogger()
         {
-            Logger.InitializeLogger(LogManager.GetLogger(typeof(WorldServerBootstrap<TEncryptor>)));
+            ConsoleStartup.InitializeLogger(typeof(WorldServerBootstrap<TEncryptor>));
         }
 
         private void WriteStartupBanner()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string text = $"- NosMonsterV3 - ";
-
-            int offset = (Console.WindowWidth / 2) + (text.Length / 2);
-            string separator = new string('=', Console.WindowWidth);
-            Console.WriteLine(separator + string.Format("{0," + offset + "}\n", text) + separator);
+            ConsoleStartup.WriteBanner("- NosMonsterV3 - ");
         }
 
         private void AuthenticateMasterServer()

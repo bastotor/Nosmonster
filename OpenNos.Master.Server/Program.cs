@@ -12,82 +12,42 @@
  * GNU General Public License for more details.
  */
 
-using log4net;
 using OpenNos.Core;
-using OpenNos.DAL;
+using OpenNos.Core.Bootstrapping;
 using OpenNos.DAL.EF.Helpers;
-using OpenNos.Data;
-using OpenNos.GameObject;
-using OpenNos.Master.Library.Data;
 using OpenNos.Master.Library.Interface;
 using OpenNos.SCS.Communication.Scs.Communication.EndPoints.Tcp;
 using OpenNos.SCS.Communication.ScsServices.Service;
 using System;
 using System.Configuration;
-using System.Diagnostics;
-using System.Globalization;
-using System.Net;
-using System.Reactive.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
 
 namespace OpenNos.Master.Server
 {
     internal static class Program
     {
-        #region Members
-
-        private static readonly ManualResetEvent _run = new ManualResetEvent(true);
-
-        private static bool _isDebug;
-
-        #endregion
-
         #region Methods
 
         public static void Main(string[] args)
         {
             try
             {
-#if DEBUG
-                _isDebug = true;
-#endif
-                CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
-                Console.Title = $"NosTale NosMonsterV3 - Master Server [Port: 4545 - Language: EN]";
-
-                bool ignoreStartupMessages = false;
-                bool ignoreTelemetry = false;
-                foreach (string arg in args)
-                {
-                    switch (arg)
-                    {
-                        case "--nomsg":
-                            ignoreStartupMessages = true;
-                            break;
-
-                        case "--notelemetry":
-                            ignoreTelemetry = true;
-                            break;
-                    }
-                }
-
-                // initialize Logger
-                Logger.InitializeLogger(LogManager.GetLogger(typeof(Program)));
+                ConsoleStartup.InitializeCulture("en-US");
+                ConsoleStartupArguments startupArgs = ConsoleStartup.ParseArguments(args);
+                ConsoleStartup.SetConsoleTitle("NosTale NosMonsterV3 - Master Server [Port: 4545 - Language: EN]");
+                ConsoleStartup.InitializeLogger(typeof(Program));
 
                 int port = Convert.ToInt32(ConfigurationManager.AppSettings["MasterPort"]);
-                if (!ignoreStartupMessages)
+                if (startupArgs.PortOverride.HasValue)
                 {
-                    Assembly assembly = Assembly.GetExecutingAssembly();
-                    FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-                    string text = $"- NosMonsterV3 -";
-                    int offset = (Console.WindowWidth / 2) + (text.Length / 2);
-                    string separator = new string('=', Console.WindowWidth);
-                    Console.WriteLine(separator + string.Format("{0," + offset + "}\n", text) + separator);
+                    port = startupArgs.PortOverride.Value;
+                    Console.WriteLine("Port override: " + port);
                 }
 
-                // initialize DB
+                if (!startupArgs.IgnoreStartupMessages)
+                {
+                    ConsoleStartup.WriteBanner("- NosMonsterV3 -");
+                }
+
                 if (!DataAccessHelper.Initialize())
                 {
                     Console.ReadLine();
@@ -98,22 +58,21 @@ namespace OpenNos.Master.Server
 
                 try
                 {
-                    // configure Services and Service Host
                     string ipAddress = ConfigurationManager.AppSettings["MasterIP"];
-                    IScsServiceApplication _server = ScsServiceBuilder.CreateService(new ScsTcpEndPoint(ipAddress, port));
+                    IScsServiceApplication server = ScsServiceBuilder.CreateService(new ScsTcpEndPoint(ipAddress, port));
 
-                    _server.AddService<ICommunicationService, CommunicationService>(new CommunicationService());
-                    _server.AddService<IConfigurationService, ConfigurationService>(new ConfigurationService());
-                    _server.AddService<IMailService, MailService>(new MailService());
-                    _server.AddService<IMallService, MallService>(new MallService());
-                    _server.AddService<IAuthentificationService, AuthentificationService>(new AuthentificationService());
-                    _server.ClientConnected += OnClientConnected;
-                    _server.ClientDisconnected += OnClientDisconnected;
+                    server.AddService<ICommunicationService, CommunicationService>(new CommunicationService());
+                    server.AddService<IConfigurationService, ConfigurationService>(new ConfigurationService());
+                    server.AddService<IMailService, MailService>(new MailService());
+                    server.AddService<IMallService, MallService>(new MallService());
+                    server.AddService<IAuthentificationService, AuthentificationService>(new AuthentificationService());
+                    server.ClientConnected += OnClientConnected;
+                    server.ClientDisconnected += OnClientDisconnected;
 
-                    _server.Start();
+                    server.Start();
                     Console.WriteLine("[Start] Master Server has been started successfully");
                     Console.WriteLine($"[Info] Started at: {DateTime.Now}");
-                    if (!ignoreTelemetry)
+                    if (!startupArgs.IgnoreTelemetry)
                     {
                     }
                 }
@@ -130,7 +89,7 @@ namespace OpenNos.Master.Server
         }
 
         private static void OnClientConnected(object sender, ServiceClientEventArgs e)
-        { 
+        {
             if (e.Client.ClientId == 1)
             {
                 Console.WriteLine("[Connect] World Server has been connected");
@@ -144,7 +103,6 @@ namespace OpenNos.Master.Server
 
         private static void OnClientDisconnected(object sender, ServiceClientEventArgs e)
         {
-
         }
 
         #endregion
