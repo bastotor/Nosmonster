@@ -1287,6 +1287,46 @@ namespace OpenNos.GameObject.Networking
 
         public void Initialize()
         {
+            InitializeConfiguration();
+            LoadBossEntities();
+            CharacterScreenSessions = new ThreadSafeSortedList<long, ClientSession>();
+            Schedules = ConfigurationManager.GetSection("eventScheduler") as List<Schedule>;
+
+            LoadItems();
+            LoadBoxItems();
+            InitializeDrops();
+            InitializeMonsterSkills();
+            InitializeBazaar();
+            InitializeNpcMonsters();
+            InitializeRecipes();
+            InitializeRecipeLists();
+            InitializeShopItems();
+            InitializeShopSkills();
+            InitializeShops();
+            InitializeTeleporters();
+            InitializeSkills();
+            InitializeCards();
+            InitializeQuests();
+            InitializeMapNpcs();
+
+            try
+            {
+                InitializeMapsAndInstances();
+                InitializeEventState();
+                InitializeArenaInstances();
+                InitializeSpecialistGemMaps();
+                FinalizeWorldInitialization();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("General Error", ex);
+            }
+
+            WorldId = Guid.NewGuid();
+        }
+
+        private void InitializeConfiguration()
+        {
             Configuration = new ConfigurationObject
             {
                 DoubleExpe = bool.Parse(ConfigurationManager.AppSettings["DoubleExp"]),
@@ -1304,21 +1344,16 @@ namespace OpenNos.GameObject.Networking
             };
 
             MaxBankGold = long.Parse(ConfigurationManager.AppSettings["MaxBankGold"]);
-
             Act4RaidStart = DateTime.Now;
             Act4AngelStat = new Act4Stat();
             Act4DemonStat = new Act4Stat();
             Act6AngelStat = new Act6Stat();
             Act6DemonStat = new Act6Stat();
             LastFCSent = DateTime.Now;
-            LoadBossEntities();
+        }
 
-            CharacterScreenSessions = new ThreadSafeSortedList<long, ClientSession>();
-
-            // Load Configuration
-
-            Schedules = ConfigurationManager.GetSection("eventScheduler") as List<Schedule>;
-
+        private void LoadItems()
+        {
             OrderablePartitioner<ItemDTO> itemPartitioner = Partitioner.Create(DAOFactory.ItemDAO.LoadAll(), EnumerablePartitionerOptions.NoBuffering);
             Parallel.ForEach(itemPartitioner, new ParallelOptions { MaxDegreeOfParallelism = 4 }, itemDto =>
             {
@@ -1381,16 +1416,16 @@ namespace OpenNos.GameObject.Networking
             });
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"[Load] {_items.Count} Items has been loaded");
+        }
 
-            #region BoxItem
-
+        private void LoadBoxItems()
+        {
             BoxItems = DAOFactory.BoxItemDAO.LoadAll();
-
             Console.WriteLine($"[Load] {BoxItems.Count} Box Items has been loaded");
+        }
 
-            #endregion
-
-            // intialize monsterdrops
+        private void InitializeDrops()
+        {
             _monsterDrops = new ThreadSafeSortedList<short, List<DropDTO>>();
             Parallel.ForEach(DAOFactory.DropDAO.LoadAll().GroupBy(d => d.MonsterVNum), monsterDropGrouping =>
             {
@@ -1404,13 +1439,18 @@ namespace OpenNos.GameObject.Networking
                 }
             });
             Console.WriteLine($"[Load] {_monsterDrops.Sum(i => i.Count)} Drops has been loaded");
+        }
 
-            // initialize monsterskills
+        private void InitializeMonsterSkills()
+        {
             _monsterSkills = new ThreadSafeSortedList<short, List<NpcMonsterSkill>>();
-            Parallel.ForEach(DAOFactory.NpcMonsterSkillDAO.LoadAll().GroupBy(n => n.NpcMonsterVNum), monsterSkillGrouping => _monsterSkills[monsterSkillGrouping.Key] = monsterSkillGrouping.Select(n => new NpcMonsterSkill(n)).ToList());
+            Parallel.ForEach(DAOFactory.NpcMonsterSkillDAO.LoadAll().GroupBy(n => n.NpcMonsterVNum),
+                monsterSkillGrouping => _monsterSkills[monsterSkillGrouping.Key] = monsterSkillGrouping.Select(n => new NpcMonsterSkill(n)).ToList());
             Console.WriteLine($"[Load] {_monsterSkills.Sum(i => i.Count)} Monsterskills has been loaded");
+        }
 
-            // initialize bazaar
+        private void InitializeBazaar()
+        {
             BazaarList = new ThreadSafeGenericList<BazaarItemLink>();
             OrderablePartitioner<BazaarItemDTO> bazaarPartitioner = Partitioner.Create(DAOFactory.BazaarItemDAO.LoadAll(), EnumerablePartitionerOptions.NoBuffering);
             Parallel.ForEach(bazaarPartitioner, new ParallelOptions { MaxDegreeOfParallelism = 8 }, bazaarItem =>
@@ -1428,19 +1468,25 @@ namespace OpenNos.GameObject.Networking
                 BazaarList.Add(item);
             });
             Console.WriteLine($"[Load] Bazaar Itemlist: {BazaarList.Count} - successfully loaded");
+        }
 
-            // initialize npcmonsters
+        private void InitializeNpcMonsters()
+        {
             Parallel.ForEach(DAOFactory.NpcMonsterDAO.LoadAll(), npcMonster =>
             {
                 NpcMonster npcMonsterObj = new NpcMonster(npcMonster);
                 npcMonsterObj.Initialize();
                 npcMonsterObj.BCards = new List<BCard>();
-                DAOFactory.BCardDAO.LoadByNpcMonsterVNum(npcMonster.OriginalNpcMonsterVNum > 0 ? npcMonster.OriginalNpcMonsterVNum : npcMonster.NpcMonsterVNum).ToList().ForEach(s => npcMonsterObj.BCards.Add(new BCard(s)));
+                DAOFactory.BCardDAO.LoadByNpcMonsterVNum(npcMonster.OriginalNpcMonsterVNum > 0 ? npcMonster.OriginalNpcMonsterVNum : npcMonster.NpcMonsterVNum)
+                    .ToList()
+                    .ForEach(s => npcMonsterObj.BCards.Add(new BCard(s)));
                 _npcmonsters.Add(npcMonsterObj);
             });
             Console.WriteLine($"[Load] {_npcmonsters.Count} NPC-Monster has been loaded");
+        }
 
-            // intialize recipes
+        private void InitializeRecipes()
+        {
             _recipes = new ThreadSafeSortedList<short, Recipe>();
             Parallel.ForEach(DAOFactory.RecipeDAO.LoadAll(), recipeGrouping =>
             {
@@ -1449,21 +1495,29 @@ namespace OpenNos.GameObject.Networking
                 recipe.Initialize();
             });
             Console.WriteLine($"[Load] {_recipes.Count} Recipes has been loaded");
+        }
 
-            // initialize recipelist
+        private void InitializeRecipeLists()
+        {
             _recipeLists = new ThreadSafeSortedList<int, RecipeListDTO>();
             Parallel.ForEach(DAOFactory.RecipeListDAO.LoadAll(), recipeListGrouping => _recipeLists[recipeListGrouping.RecipeListId] = recipeListGrouping);
+        }
 
-            // initialize shopitems
+        private void InitializeShopItems()
+        {
             _shopItems = new ThreadSafeSortedList<int, List<ShopItemDTO>>();
             Parallel.ForEach(DAOFactory.ShopItemDAO.LoadAll().GroupBy(s => s.ShopId), shopItemGrouping => _shopItems[shopItemGrouping.Key] = shopItemGrouping.ToList());
             Console.WriteLine($"[Load] {_shopItems.Sum(i => i.Count)} Shop-Items has been loaded");
+        }
 
-            // initialize shopskills
+        private void InitializeShopSkills()
+        {
             _shopSkills = new ThreadSafeSortedList<int, List<ShopSkillDTO>>();
             Parallel.ForEach(DAOFactory.ShopSkillDAO.LoadAll().GroupBy(s => s.ShopId), shopSkillGrouping => _shopSkills[shopSkillGrouping.Key] = shopSkillGrouping.ToList());
+        }
 
-            // initialize shops
+        private void InitializeShops()
+        {
             _shops = new ThreadSafeSortedList<int, Shop>();
             Parallel.ForEach(DAOFactory.ShopDAO.LoadAll(), shopGrouping =>
             {
@@ -1472,13 +1526,18 @@ namespace OpenNos.GameObject.Networking
                 shop.Initialize();
             });
             Console.WriteLine($"[Load] {_shops.Count} Shops has been loaded");
+        }
 
-            // initialize teleporters
+        private void InitializeTeleporters()
+        {
             _teleporters = new ThreadSafeSortedList<int, List<TeleporterDTO>>();
-            Parallel.ForEach(DAOFactory.TeleporterDAO.LoadAll().GroupBy(t => t.MapNpcId), teleporterGrouping => _teleporters[teleporterGrouping.Key] = teleporterGrouping.Select(t => t).ToList());
+            Parallel.ForEach(DAOFactory.TeleporterDAO.LoadAll().GroupBy(t => t.MapNpcId),
+                teleporterGrouping => _teleporters[teleporterGrouping.Key] = teleporterGrouping.Select(t => t).ToList());
             Console.WriteLine($"[Load] {_teleporters.Sum(i => i.Count)} Teleporters has been loaded");
+        }
 
-            // initialize skills
+        private void InitializeSkills()
+        {
             Parallel.ForEach(DAOFactory.SkillDAO.LoadAll(), skill =>
             {
                 Skill skillObj = new Skill(skill);
@@ -1487,8 +1546,10 @@ namespace OpenNos.GameObject.Networking
                 DAOFactory.BCardDAO.LoadBySkillVNum(skillObj.SkillVNum).ToList().ForEach(o => skillObj.BCards.Add(new BCard(o)));
                 _skills.Add(skillObj);
             });
+        }
 
-            // initialize cards
+        private void InitializeCards()
+        {
             Parallel.ForEach(DAOFactory.CardDAO.LoadAll(), card =>
             {
                 Card cardObj = new Card(card)
@@ -1498,10 +1559,10 @@ namespace OpenNos.GameObject.Networking
                 DAOFactory.BCardDAO.LoadByCardId(cardObj.CardId).ToList().ForEach(o => cardObj.BCards.Add(new BCard(o)));
                 _cards.Add(cardObj);
             });
+        }
 
-
-
-            // initialize quests
+        private void InitializeQuests()
+        {
             Quests = new List<Quest>();
             foreach (QuestDTO questdto in DAOFactory.QuestDAO.LoadAll())
             {
@@ -1513,182 +1574,152 @@ namespace OpenNos.GameObject.Networking
             FlowerQuestId = Quests.FirstOrDefault(q => q.QuestType == (byte)QuestType.FlowerQuest)?.QuestId;
 
             Console.WriteLine($"[Load] {Quests.Count} Quest has been loaded");
+        }
 
-            // intialize mapnpcs
+        private void InitializeMapNpcs()
+        {
             _mapNpcs = new ThreadSafeSortedList<short, List<MapNpc>>();
             Parallel.ForEach(DAOFactory.MapNpcDAO.LoadAll().GroupBy(t => t.MapId), mapNpcGrouping => _mapNpcs[mapNpcGrouping.Key] = mapNpcGrouping.Select(t => t as MapNpc).ToList());
-
             Console.WriteLine($"[Load] {_mapNpcs.Sum(i => i.Count)} Map-NPCs has been loaded");
+        }
 
-            try
+        private void InitializeMapsAndInstances()
+        {
+            int mapCount = 0;
+            int monsterCount = 0;
+            OrderablePartitioner<MapDTO> mapPartitioner = Partitioner.Create(DAOFactory.MapDAO.LoadAll(), EnumerablePartitionerOptions.NoBuffering);
+            Parallel.ForEach(mapPartitioner, new ParallelOptions { MaxDegreeOfParallelism = 8 }, map =>
             {
-                int i = 0;
-                int monstercount = 0;
-                OrderablePartitioner<MapDTO> mapPartitioner = Partitioner.Create(DAOFactory.MapDAO.LoadAll(), EnumerablePartitionerOptions.NoBuffering);
-                Parallel.ForEach(mapPartitioner, new ParallelOptions { MaxDegreeOfParallelism = 8 }, map =>
+                Guid guid = Guid.NewGuid();
+                Map mapinfo = new Map(map.MapId, map.GridMapId, map.Data)
                 {
-                    Guid guid = Guid.NewGuid();
-                    Map mapinfo = new Map(map.MapId, map.GridMapId, map.Data)
-                    {
-                        Music = map.Music,
-                        Name = map.Name,
-                        ShopAllowed = map.ShopAllowed,
-                        XpRate = map.XpRate
-                    };
-                    _maps.Add(mapinfo);
-                    MapInstance newMap = new MapInstance(mapinfo, guid, map.ShopAllowed, MapInstanceType.BaseMapInstance, new InstanceBag(), true);
-                    _mapinstances.TryAdd(guid, newMap);
+                    Music = map.Music,
+                    Name = map.Name,
+                    ShopAllowed = map.ShopAllowed,
+                    XpRate = map.XpRate
+                };
+                _maps.Add(mapinfo);
+                MapInstance newMap = new MapInstance(mapinfo, guid, map.ShopAllowed, MapInstanceType.BaseMapInstance, new InstanceBag(), true);
+                _mapinstances.TryAdd(guid, newMap);
 
-                    Task.Run((Action)newMap.LoadPortals);
-                    newMap.LoadNpcs();
-                    newMap.LoadMonsters();
+                Task.Run((Action)newMap.LoadPortals);
+                newMap.LoadNpcs();
+                newMap.LoadMonsters();
 
-                    Parallel.ForEach(newMap.Npcs, mapNpc =>
-                    {
-                        mapNpc.MapInstance = newMap;
-                        newMap.AddNPC(mapNpc);
-                    });
-                    Parallel.ForEach(newMap.Monsters, mapMonster =>
-                    {
-                        mapMonster.MapInstance = newMap;
-                        newMap.AddMonster(mapMonster);
-                    });
-                    monstercount += newMap.Monsters.Count;
-                    i++;
+                Parallel.ForEach(newMap.Npcs, mapNpc =>
+                {
+                    mapNpc.MapInstance = newMap;
+                    newMap.AddNPC(mapNpc);
                 });
-                if (i != 0)
+                Parallel.ForEach(newMap.Monsters, mapMonster =>
                 {
-                    Console.WriteLine($"[Load] {i} Maps has been loaded");
-                }
-                else
-                {
-                    Console.WriteLine($"[Error] You need at least 1 Map to connect to the Server");
-                }
+                    mapMonster.MapInstance = newMap;
+                    newMap.AddMonster(mapMonster);
+                });
+                Interlocked.Increment(ref mapCount);
+                Interlocked.Add(ref monsterCount, newMap.Monsters.Count);
+            });
 
-
-                Console.WriteLine($"[Load] {monstercount} Monsters has been loaded");
-                StartedEvents = new List<EventType>();
-
-                LoadFamilies();
-                LaunchEvents();
-                RefreshRanking();
-
-                CharacterRelations = DAOFactory.CharacterRelationDAO.LoadAll().ToList();
-                PenaltyLogs = DAOFactory.PenaltyLogDAO.LoadAll().ToList();
-
-                #region Normal Arena
-
-                if (DAOFactory.MapDAO.LoadById(2006) != null)
-                {
-                    ArenaInstance = GenerateMapInstance(2006, MapInstanceType.NormalInstance, new InstanceBag());
-                    ArenaInstance.IsPVP = true;
-
-                    Portal portal = new Portal
-                    {
-                        SourceMapId = 2006,
-                        SourceX = 37,
-                        SourceY = 15,
-                        DestinationMapId = 1,
-                        DestinationX = 0,
-                        DestinationY = 0,
-                        Type = -1
-                    };
-                    Console.WriteLine($"[Load] The individual Arena has been loaded");
-                    ArenaInstance.CreatePortal(portal);
-                }
-
-                #endregion
-
-                #region Family Arena
-
-                if (DAOFactory.MapDAO.LoadById(2106) != null)
-                {
-                    FamilyArenaInstance = GenerateMapInstance(2106, MapInstanceType.NormalInstance, new InstanceBag());
-                    FamilyArenaInstance.IsPVP = true;
-
-                    Portal portal = new Portal
-                    {
-                        SourceMapId = 2106,
-                        SourceX = 38,
-                        SourceY = 3,
-                        DestinationMapId = 1,
-                        DestinationX = 0,
-                        DestinationY = 0,
-                        Type = -1
-                    };
-                    Console.WriteLine($"[Load] The Family Arena has been loaded");
-                    FamilyArenaInstance.CreatePortal(portal);
-                }
-
-                #endregion
-
-                #region
-                if (DAOFactory.MapDAO.LoadById(30008) != null)
-                {
-                    ArenaInstance2 = GenerateMapInstance(30008, MapInstanceType.NormalInstance, new InstanceBag());
-                    ArenaInstance2.IsPVP = true;
-
-                    Portal portal = new Portal
-                    {
-                        SourceMapId = 30008,
-                        SourceX = 37,
-                        SourceY = 15,
-                        DestinationMapId = 1,
-                        DestinationX = 0,
-                        DestinationY = 0,
-                        Type = -1
-                    };
-                    Console.WriteLine($"[Load] The NosMonsterV3 Arena has been loaded");
-                    ArenaInstance.CreatePortal(portal);
-                }
-                #endregion
-
-                #region Specialist Gem Map
-
-                if (DAOFactory.MapDAO.LoadById(2107) != null)
-                {
-                    Portal portal = new Portal
-                    {
-                        SourceMapId = 2107,
-                        SourceX = 10,
-                        SourceY = 5,
-                        DestinationMapId = 1,
-                        DestinationX = 0,
-                        DestinationY = 0,
-                        Type = -1
-                    };
-
-                    void loadSpecialistGemMap(short npcVNum)
-                    {
-                        MapInstance specialistGemMapInstance;
-                        specialistGemMapInstance = GenerateMapInstance(2107, MapInstanceType.NormalInstance, new InstanceBag());
-                        specialistGemMapInstance.Npcs.Where(s => s.NpcVNum != npcVNum).ToList().ForEach(s => specialistGemMapInstance.RemoveNpc(s));
-                        specialistGemMapInstance.CreatePortal(portal);
-                        SpecialistGemMapInstances.Add(specialistGemMapInstance);
-                    }
-
-                    loadSpecialistGemMap(932); // Pajama
-                    loadSpecialistGemMap(933); // SP 1
-                    loadSpecialistGemMap(934); // SP 2
-                    loadSpecialistGemMap(948); // SP 3
-                    loadSpecialistGemMap(954); // SP 4
-                    Console.WriteLine($"[Load] The Mysterious Soulgems has been loaded");
-                }
-
-                #endregion
-
-                LoadScriptedInstances();
-                Logger.Log.Info($"[Load]Scripts has been loaded");
-                LoadBannedCharacters();
-                LoadFishes();
-                Logger.Log.Info($"[Load]Fishes has been loaded");
-            }
-            catch (Exception ex)
+            if (mapCount != 0)
             {
-                Logger.Error("General Error", ex);
+                Console.WriteLine($"[Load] {mapCount} Maps has been loaded");
+            }
+            else
+            {
+                Console.WriteLine($"[Error] You need at least 1 Map to connect to the Server");
             }
 
-            WorldId = Guid.NewGuid();
+            Console.WriteLine($"[Load] {monsterCount} Monsters has been loaded");
+        }
+
+        private void InitializeEventState()
+        {
+            StartedEvents = new List<EventType>();
+
+            LoadFamilies();
+            LaunchEvents();
+            RefreshRanking();
+
+            CharacterRelations = DAOFactory.CharacterRelationDAO.LoadAll().ToList();
+            PenaltyLogs = DAOFactory.PenaltyLogDAO.LoadAll().ToList();
+        }
+
+        private void InitializeArenaInstances()
+        {
+            ArenaInstance = InitializeArenaInstance(2006, "The individual Arena has been loaded", 37, 15);
+            FamilyArenaInstance = InitializeArenaInstance(2106, "The Family Arena has been loaded", 38, 3);
+            ArenaInstance2 = InitializeArenaInstance(30008, "The NosMonsterV3 Arena has been loaded", 37, 15, ArenaInstance);
+        }
+
+        private MapInstance InitializeArenaInstance(short mapId, string logMessage, short sourceX, short sourceY, MapInstance portalTarget = null)
+        {
+            if (DAOFactory.MapDAO.LoadById(mapId) == null)
+            {
+                return null;
+            }
+
+            MapInstance arenaInstance = GenerateMapInstance(mapId, MapInstanceType.NormalInstance, new InstanceBag())
+            {
+                IsPVP = true
+            };
+
+            Console.WriteLine($"[Load] {logMessage}");
+            MapInstance targetInstance = portalTarget ?? arenaInstance;
+            targetInstance.CreatePortal(CreateArenaPortal(mapId, sourceX, sourceY));
+            return arenaInstance;
+        }
+
+        private static Portal CreateArenaPortal(short sourceMapId, short sourceX, short sourceY)
+        {
+            return CreatePortal(sourceMapId, sourceX, sourceY, 1, 0, 0, -1);
+        }
+
+        private static Portal CreatePortal(short sourceMapId, short sourceX, short sourceY, short destinationMapId, short destinationX, short destinationY, short portalType)
+        {
+            return new Portal
+            {
+                SourceMapId = sourceMapId,
+                SourceX = sourceX,
+                SourceY = sourceY,
+                DestinationMapId = destinationMapId,
+                DestinationX = destinationX,
+                DestinationY = destinationY,
+                Type = portalType
+            };
+        }
+
+        private void InitializeSpecialistGemMaps()
+        {
+            if (DAOFactory.MapDAO.LoadById(2107) == null)
+            {
+                return;
+            }
+
+            Portal portal = CreatePortal(2107, 10, 5, 1, 0, 0, -1);
+
+            void LoadSpecialistGemMap(short npcVNum)
+            {
+                MapInstance specialistGemMapInstance = GenerateMapInstance(2107, MapInstanceType.NormalInstance, new InstanceBag());
+                specialistGemMapInstance.Npcs.Where(s => s.NpcVNum != npcVNum).ToList().ForEach(s => specialistGemMapInstance.RemoveNpc(s));
+                specialistGemMapInstance.CreatePortal(portal);
+                SpecialistGemMapInstances.Add(specialistGemMapInstance);
+            }
+
+            LoadSpecialistGemMap(932); // Pajama
+            LoadSpecialistGemMap(933); // SP 1
+            LoadSpecialistGemMap(934); // SP 2
+            LoadSpecialistGemMap(948); // SP 3
+            LoadSpecialistGemMap(954); // SP 4
+            Console.WriteLine($"[Load] The Mysterious Soulgems has been loaded");
+        }
+
+        private void FinalizeWorldInitialization()
+        {
+            LoadScriptedInstances();
+            Logger.Log.Info($"[Load]Scripts has been loaded");
+            LoadBannedCharacters();
+            LoadFishes();
+            Logger.Log.Info($"[Load]Fishes has been loaded");
         }
 
         public static double RandomDouble()

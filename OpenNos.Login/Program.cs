@@ -12,20 +12,16 @@
  * GNU General Public License for more details.
  */
 
-using log4net;
 using OpenNos.Core;
-using OpenNos.DAL;
+using OpenNos.Core.Bootstrapping;
 using OpenNos.DAL.EF.Helpers;
-using OpenNos.Data;
-using OpenNos.GameObject;
+using OpenNos.GameObject.Networking;
 using OpenNos.Handler;
 using OpenNos.Handler.Packets.LoginPackets;
 using OpenNos.Master.Library.Client;
 using System;
 using System.Configuration;
 using System.Diagnostics;
-using System.Globalization;
-using System.Reflection;
 using NosTale.Packets.Packets.ClientPackets;
 
 namespace OpenNos.Login
@@ -33,8 +29,6 @@ namespace OpenNos.Login
     public static class Program
     {
         #region Members
-
-        private static bool _isDebug;
 
         private static int _port;
 
@@ -44,86 +38,69 @@ namespace OpenNos.Login
 
         public static void Main(string[] args)
         {
-            checked
+            try
             {
+                ConsoleStartup.InitializeCulture("en-US");
+                ConsoleStartupArguments startupArgs = ConsoleStartup.ParseArguments(args);
+                ConsoleStartup.SetConsoleTitle("NosTale NosMonsterV3 - Login Server [Port: 4002 - Language: FR]");
+                ConsoleStartup.InitializeLogger(typeof(Program));
+
+                int port = Convert.ToInt32(ConfigurationManager.AppSettings["LoginPort"]);
+                if (startupArgs.PortOverride.HasValue)
+                {
+                    port = startupArgs.PortOverride.Value;
+                    Console.WriteLine("Port override: " + port);
+                }
+                _port = port;
+
+                if (!startupArgs.IgnoreStartupMessages)
+                {
+                    ConsoleStartup.WriteBanner("- NosMonsterV3 -");
+                }
+
+                if (CommunicationServiceClient.Instance.Authenticate(ConfigurationManager.AppSettings["MasterAuthKey"]))
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("[Authentication] The Master Server connection has been established");
+                }
+
+                if (!DataAccessHelper.Initialize())
+                {
+                    Console.ReadKey();
+                    return;
+                }
+
+                Console.WriteLine("[Load] Config has been loaded");
+
                 try
                 {
-#if DEBUG
-                    _isDebug = true;
-#endif
-                    CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
-                    Console.Title = $"NosTale NosMonsterV3 - Login Server [Port: 4002 - Language: FR]";
-
-                    bool ignoreStartupMessages = false;
-                    foreach (string arg in args)
-                    {
-                        ignoreStartupMessages |= arg == "--nomsg";
-                    }
-
-                    // initialize Logger
-                    Logger.InitializeLogger(LogManager.GetLogger(typeof(Program)));
-
-                    int port = Convert.ToInt32(ConfigurationManager.AppSettings["LoginPort"]);
-                    int portArgIndex = Array.FindIndex(args, s => s == "--port");
-                    if (portArgIndex != -1
-                        && args.Length >= portArgIndex + 1
-                        && int.TryParse(args[portArgIndex + 1], out port))
-                    {
-                        Console.WriteLine("Port override: " + port);
-                    }
-                    _port = port;
-                    if (!ignoreStartupMessages)
-                    {
-                        Assembly assembly = Assembly.GetExecutingAssembly();
-                        FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-                        string text = $"- NosMonsterV3 -";
-                        int offset = (Console.WindowWidth / 2) + (text.Length / 2);
-                        string separator = new string('=', Console.WindowWidth);
-                        Console.WriteLine(separator + string.Format("{0," + offset + "}\n", text) + separator);
-                    }
-
-                    // initialize api
-                    if (CommunicationServiceClient.Instance.Authenticate(ConfigurationManager.AppSettings["MasterAuthKey"]))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("[Authentication] The Master Server connection has been established");
-                    }
-
-                    // initialize DB
-                    if (!DataAccessHelper.Initialize())
-                    {
-                        Console.ReadKey();
-                        return;
-                    }
-
-                    Console.WriteLine("[Load] Config has been loaded");
-
-                    try
-                    {
-                        AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionHandler;
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error("General Error", ex);
-                    }
-
-                    try
-                    {
-                        // initialize PacketSerialization
-                        PacketFactory.Initialize<WalkPacket>();
-
-                        NetworkManager<LoginCryptography> networkManager = new NetworkManager<LoginCryptography>(ConfigurationManager.AppSettings["IPAddress"], port, typeof(NoS0575PacketHandler), typeof(LoginCryptography), false);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.LogEventError("INITIALIZATION_EXCEPTION", "General Error Server", ex);
-                    }
+                    AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionHandler;
                 }
                 catch (Exception ex)
                 {
-                    Logger.LogEventError("INITIALIZATION_EXCEPTION", "General Error", ex);
-                    Console.ReadKey();
+                    Logger.Error("General Error", ex);
                 }
+
+                try
+                {
+                    PacketFactory.Initialize<WalkPacket>();
+
+                    NetworkManager<LoginCryptography> networkManager = new NetworkManager<LoginCryptography>(
+                        ConfigurationManager.AppSettings["IPAddress"],
+                        port,
+                        typeof(NoS0575PacketHandler),
+                        typeof(LoginCryptography),
+                        false);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogEventError("INITIALIZATION_EXCEPTION", "General Error Server", ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogEventError("INITIALIZATION_EXCEPTION", "General Error", ex);
+                Console.ReadKey();
             }
         }
 
@@ -132,13 +109,12 @@ namespace OpenNos.Login
             Logger.Error((Exception)e.ExceptionObject);
             try
             {
-
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
             }
-            
+
             Logger.Debug("Login Server crashed! Rebooting gracefully...");
             Process.Start("OpenNos.Login.exe", $"--nomsg --port {_port}");
             Environment.Exit(1);

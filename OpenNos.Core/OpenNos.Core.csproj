@@ -146,6 +146,7 @@
     <Compile Include="Networking\Communication\Scs\Server\ServerClientEventArgs.cs" />
     <Compile Include="Networking\Communication\Scs\Server\Tcp\ScsTcpServer.cs" />
     <Compile Include="Language.cs" />
+    <Compile Include="Bootstrapping\ConsoleStartup.cs" />
     <Compile Include="Cryptography\CryptographyBase.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Handling\PacketAttribute.cs" />

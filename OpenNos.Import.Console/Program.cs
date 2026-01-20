@@ -12,15 +12,12 @@
  * GNU General Public License for more details.
  */
 
-using log4net;
 using OpenNos.Core;
-using OpenNos.DAL;
+using OpenNos.Core.Bootstrapping;
 using OpenNos.DAL.EF.Helpers;
-using OpenNos.Data;
 using System;
 using System.Configuration;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Reflection;
 
@@ -36,27 +33,19 @@ namespace OpenNos.Import.Console
 #if DEBUG
             isDebug = true;
 #endif
-            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
-            System.Console.Title = $"OpenNos Import Console{(isDebug ? " Development Environment" : "")}";
+            ConsoleStartup.InitializeCulture("en-US");
+            ConsoleStartupArguments startupArgs = ConsoleStartup.ParseArguments(args);
+            ConsoleStartup.SetConsoleTitle($"OpenNos Import Console{(isDebug ? " Development Environment" : "")}");
+            ConsoleStartup.InitializeLogger(typeof(Program));
 
-            bool ignoreStartupMessages = false;
-            foreach (string arg in args)
-            {
-                ignoreStartupMessages |= arg == "--nomsg";
-            }
-
-            // initialize logger
-            Logger.InitializeLogger(LogManager.GetLogger(typeof(Program)));
-
-            if (!ignoreStartupMessages)
+            if (!startupArgs.IgnoreStartupMessages)
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
                 string text = $"IMPORT CONSOLE VERSION {fileVersionInfo.ProductVersion} by OpenNos Team";
-                int offset = (System.Console.WindowWidth / 2) + (text.Length / 2);
-                string separator = new string('=', System.Console.WindowWidth);
-                System.Console.WriteLine(separator + string.Format("{0," + offset + "}\n", text) + separator);
+                ConsoleStartup.WriteBanner(text);
             }
+
             DataAccessHelper.Initialize();
             Logger.Warn(Language.Instance.GetMessageFromKey("NEED_TREE"));
             System.Console.BackgroundColor = ConsoleColor.Blue;
